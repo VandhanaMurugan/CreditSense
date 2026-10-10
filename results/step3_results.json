@@ -1,0 +1,206 @@
+{
+  "threshold_sweep": {
+    "Random Forest": [
+      {
+        "threshold": 0.2,
+        "precision": 0.1255,
+        "recall": 0.925,
+        "f1": 0.221
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.14,
+        "recall": 0.8979,
+        "f1": 0.2422
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.1537,
+        "recall": 0.872,
+        "f1": 0.2613
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.1692,
+        "recall": 0.8393,
+        "f1": 0.2816
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.1851,
+        "recall": 0.8125,
+        "f1": 0.3015
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.2075,
+        "recall": 0.7742,
+        "f1": 0.3272
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.2328,
+        "recall": 0.7284,
+        "f1": 0.3529
+      }
+    ],
+    "Gradient Boosting": [
+      {
+        "threshold": 0.2,
+        "precision": 0.1185,
+        "recall": 0.9358,
+        "f1": 0.2104
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.1326,
+        "recall": 0.9146,
+        "f1": 0.2317
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.1469,
+        "recall": 0.8891,
+        "f1": 0.2522
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.1602,
+        "recall": 0.862,
+        "f1": 0.2701
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.1751,
+        "recall": 0.8385,
+        "f1": 0.2897
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.1933,
+        "recall": 0.8133,
+        "f1": 0.3124
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.2148,
+        "recall": 0.777,
+        "f1": 0.3366
+      }
+    ],
+    "XGBoost": [
+      {
+        "threshold": 0.2,
+        "precision": 0.1198,
+        "recall": 0.9342,
+        "f1": 0.2123
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.134,
+        "recall": 0.9114,
+        "f1": 0.2336
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.1475,
+        "recall": 0.8879,
+        "f1": 0.253
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.1615,
+        "recall": 0.8612,
+        "f1": 0.2719
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.1751,
+        "recall": 0.8396,
+        "f1": 0.2898
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.1931,
+        "recall": 0.8101,
+        "f1": 0.3118
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.2173,
+        "recall": 0.7718,
+        "f1": 0.3391
+      }
+    ],
+    "Stacked Ensemble": [
+      {
+        "threshold": 0.2,
+        "precision": 0.1203,
+        "recall": 0.933,
+        "f1": 0.2131
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.1381,
+        "recall": 0.9047,
+        "f1": 0.2396
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.1527,
+        "recall": 0.8748,
+        "f1": 0.26
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.1667,
+        "recall": 0.854,
+        "f1": 0.279
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.1797,
+        "recall": 0.8297,
+        "f1": 0.2955
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.1966,
+        "recall": 0.8045,
+        "f1": 0.316
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.2181,
+        "recall": 0.7718,
+        "f1": 0.34
+      }
+    ]
+  },
+  "best_thresholds": {
+    "Random Forest": {
+      "threshold": 0.5,
+      "f1": 0.3529,
+      "precision": 0.2328,
+      "recall": 0.7284
+    },
+    "Gradient Boosting": {
+      "threshold": 0.5,
+      "f1": 0.3366,
+      "precision": 0.2148,
+      "recall": 0.777
+    },
+    "XGBoost": {
+      "threshold": 0.5,
+      "f1": 0.3391,
+      "precision": 0.2173,
+      "recall": 0.7718
+    },
+    "Stacked Ensemble": {
+      "threshold": 0.5,
+      "f1": 0.34,
+      "precision": 0.2181,
+      "recall": 0.7718
+    }
+  }
+}

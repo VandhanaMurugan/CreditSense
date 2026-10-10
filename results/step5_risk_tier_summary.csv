@@ -1,0 +1,6 @@
+risk_tier,n_borrowers,actual_default_rate
+Tier 1 (Lowest Risk),7500,0.61
+Tier 2,7500,0.87
+Tier 3,7500,2.37
+Tier 4,7500,5.36
+Tier 5 (Highest Risk),7500,24.21

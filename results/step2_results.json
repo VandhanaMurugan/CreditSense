@@ -1,0 +1,50 @@
+{
+  "Random Forest": {
+    "confusion_matrix": {
+      "TN": 28977,
+      "FP": 6016,
+      "FN": 681,
+      "TP": 1826
+    },
+    "precision": 0.2328,
+    "recall": 0.7284,
+    "f1": 0.3529,
+    "pr_auc": 0.383
+  },
+  "Gradient Boosting": {
+    "confusion_matrix": {
+      "TN": 27872,
+      "FP": 7121,
+      "FN": 559,
+      "TP": 1948
+    },
+    "precision": 0.2148,
+    "recall": 0.777,
+    "f1": 0.3366,
+    "pr_auc": 0.3955
+  },
+  "XGBoost": {
+    "confusion_matrix": {
+      "TN": 28024,
+      "FP": 6969,
+      "FN": 572,
+      "TP": 1935
+    },
+    "precision": 0.2173,
+    "recall": 0.7718,
+    "f1": 0.3391,
+    "pr_auc": 0.3993
+  },
+  "Stacked Ensemble": {
+    "confusion_matrix": {
+      "TN": 28054,
+      "FP": 6939,
+      "FN": 572,
+      "TP": 1935
+    },
+    "precision": 0.2181,
+    "recall": 0.7718,
+    "f1": 0.34,
+    "pr_auc": 0.4007
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "mean_abs_shap": {
+    "TotalPastDueEvents": 0.9314000010490417,
+    "RevolvingUtilizationOfUnsecuredLines": 0.5303999781608582,
+    "age": 0.2614000141620636,
+    "UtilizationBucket": 0.1906999945640564,
+    "NumberOfOpenCreditLinesAndLoans": 0.17309999465942383,
+    "NumberRealEstateLoansOrLines": 0.13230000436306,
+    "NumberOfTimes90DaysLate": 0.09510000050067902,
+    "NumberOfTime30-59DaysPastDueNotWorse": 0.04230000078678131,
+    "NumberOfTime60-89DaysPastDueNotWorse": 0.03290000185370445,
+    "HasPastDueHistory": 0.0
+  },
+  "direction_correlation": {
+    "TotalPastDueEvents": 0.522,
+    "HasPastDueHistory": NaN,
+    "UtilizationBucket": 0.924,
+    "RevolvingUtilizationOfUnsecuredLines": 0.935,
+    "NumberOfTimes90DaysLate": 0.543,
+    "NumberOfTime30-59DaysPastDueNotWorse": -0.471,
+    "NumberOfTime60-89DaysPastDueNotWorse": 0.611,
+    "age": -0.834,
+    "NumberRealEstateLoansOrLines": 0.516,
+    "NumberOfOpenCreditLinesAndLoans": 0.692
+  },
+  "redundant_pairs": [
+    [
+      "TotalPastDueEvents",
+      "NumberOfTimes90DaysLate",
+      0.934
+    ],
+    [
+      "TotalPastDueEvents",
+      "NumberOfTime30-59DaysPastDueNotWorse",
+      0.891
+    ],
+    [
+      "TotalPastDueEvents",
+      "NumberOfTime60-89DaysPastDueNotWorse",
+      0.928
+    ],
+    [
+      "UtilizationBucket",
+      "RevolvingUtilizationOfUnsecuredLines",
+      0.964
+    ],
+    [
+      "NumberOfTimes90DaysLate",
+      "NumberOfTime60-89DaysPastDueNotWorse",
+      0.864
+    ],
+    [
+      "NumberOfTime30-59DaysPastDueNotWorse",
+      "NumberOfTime60-89DaysPastDueNotWorse",
+      0.736
+    ]
+  ],
+  "importance_share_pct": {
+    "TotalPastDueEvents": 38.97999954223633,
+    "RevolvingUtilizationOfUnsecuredLines": 22.200000762939453,
+    "age": 10.9399995803833,
+    "UtilizationBucket": 7.980000019073486,
+    "NumberOfOpenCreditLinesAndLoans": 7.239999771118164,
+    "NumberRealEstateLoansOrLines": 5.539999961853027,
+    "NumberOfTimes90DaysLate": 3.9800000190734863,
+    "NumberOfTime30-59DaysPastDueNotWorse": 1.7699999809265137,
+    "NumberOfTime60-89DaysPastDueNotWorse": 1.3799999952316284,
+    "HasPastDueHistory": 0.0
+  },
+  "leakage_check": "No single feature dominates -- no leakage signal from importance concentration"
+}

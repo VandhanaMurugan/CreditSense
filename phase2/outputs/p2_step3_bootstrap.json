@@ -1,0 +1,159 @@
+{
+  "n_bootstrap": 1000,
+  "models": {
+    "Random Forest": {
+      "AUC": 0.8605,
+      "AUC_CI95": [
+        0.853,
+        0.868
+      ],
+      "PR_AUC": 0.383,
+      "PR_AUC_CI95": [
+        0.3628,
+        0.4044
+      ]
+    },
+    "Gradient Boosting": {
+      "AUC": 0.8649,
+      "AUC_CI95": [
+        0.8575,
+        0.8722
+      ],
+      "PR_AUC": 0.3955,
+      "PR_AUC_CI95": [
+        0.3751,
+        0.4164
+      ]
+    },
+    "XGBoost": {
+      "AUC": 0.8643,
+      "AUC_CI95": [
+        0.8566,
+        0.8717
+      ],
+      "PR_AUC": 0.3993,
+      "PR_AUC_CI95": [
+        0.3785,
+        0.42
+      ]
+    },
+    "LightGBM": {
+      "AUC": 0.8648,
+      "AUC_CI95": [
+        0.8572,
+        0.8722
+      ],
+      "PR_AUC": 0.4012,
+      "PR_AUC_CI95": [
+        0.3805,
+        0.4216
+      ]
+    },
+    "Stack A (Phase 1)": {
+      "AUC": 0.8647,
+      "AUC_CI95": [
+        0.8571,
+        0.8722
+      ],
+      "PR_AUC": 0.4007,
+      "PR_AUC_CI95": [
+        0.3806,
+        0.4223
+      ]
+    },
+    "Stack C (weighted + tuned)": {
+      "AUC": 0.8657,
+      "AUC_CI95": [
+        0.8581,
+        0.8731
+      ],
+      "PR_AUC": 0.4002,
+      "PR_AUC_CI95": [
+        0.3795,
+        0.4208
+      ]
+    }
+  },
+  "paired_differences": {
+    "Stack C (weighted + tuned) minus XGBoost [AUC]": {
+      "mean_diff": 0.0014,
+      "CI95": [
+        0.00016,
+        0.00269
+      ],
+      "CI_excludes_zero": true
+    },
+    "Stack C (weighted + tuned) minus XGBoost [PR_AUC]": {
+      "mean_diff": 0.00101,
+      "CI95": [
+        -0.00388,
+        0.00571
+      ],
+      "CI_excludes_zero": false
+    },
+    "Stack A (Phase 1) minus XGBoost [AUC]": {
+      "mean_diff": 0.00046,
+      "CI95": [
+        0.00021,
+        0.00071
+      ],
+      "CI_excludes_zero": true
+    },
+    "Stack A (Phase 1) minus XGBoost [PR_AUC]": {
+      "mean_diff": 0.00167,
+      "CI95": [
+        -0.00224,
+        0.00532
+      ],
+      "CI_excludes_zero": false
+    },
+    "Stack C (weighted + tuned) minus LightGBM [AUC]": {
+      "mean_diff": 0.00087,
+      "CI95": [
+        -0.00036,
+        0.00221
+      ],
+      "CI_excludes_zero": false
+    },
+    "Stack C (weighted + tuned) minus LightGBM [PR_AUC]": {
+      "mean_diff": -0.00078,
+      "CI95": [
+        -0.00609,
+        0.0047
+      ],
+      "CI_excludes_zero": false
+    },
+    "Stack C (weighted + tuned) minus Stack A (Phase 1) [AUC]": {
+      "mean_diff": 0.00094,
+      "CI95": [
+        -0.00015,
+        0.00208
+      ],
+      "CI_excludes_zero": false
+    },
+    "Stack C (weighted + tuned) minus Stack A (Phase 1) [PR_AUC]": {
+      "mean_diff": -0.00066,
+      "CI95": [
+        -0.00568,
+        0.00473
+      ],
+      "CI_excludes_zero": false
+    },
+    "XGBoost minus Random Forest [AUC]": {
+      "mean_diff": 0.00376,
+      "CI95": [
+        0.00209,
+        0.00556
+      ],
+      "CI_excludes_zero": true
+    },
+    "XGBoost minus Random Forest [PR_AUC]": {
+      "mean_diff": 0.01608,
+      "CI95": [
+        0.00863,
+        0.02353
+      ],
+      "CI_excludes_zero": true
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "split": {
+    "fit_rows": 89999,
+    "calibration_rows": 22500,
+    "test_rows": 37500
+  },
+  "calibration_method_cv_brier": {
+    "platt": 0.05019,
+    "isotonic": 0.05
+  },
+  "chosen_method": "isotonic",
+  "base_rate_test": 0.0669,
+  "mean_predicted_pd_raw": 0.3269,
+  "mean_predicted_pd_calibrated": 0.067,
+  "test_raw": {
+    "AUC": 0.8654,
+    "PR_AUC": 0.3986,
+    "KS": 0.572,
+    "Brier": 0.1462,
+    "ECE": 0.2601,
+    "precision": 0.2114,
+    "recall": 0.7778,
+    "F1": 0.3325,
+    "TP": 1950,
+    "FP": 7274,
+    "FN": 557,
+    "TN": 27719
+  },
+  "test_calibrated": {
+    "AUC": 0.8647,
+    "PR_AUC": 0.3827,
+    "KS": 0.5706,
+    "Brier": 0.0491,
+    "ECE": 0.0031,
+    "precision": 0.5888,
+    "recall": 0.1588,
+    "F1": 0.2501,
+    "TP": 398,
+    "FP": 278,
+    "FN": 2109,
+    "TN": 34715
+  },
+  "test_platt": {
+    "AUC": 0.8654,
+    "PR_AUC": 0.3986,
+    "KS": 0.572,
+    "Brier": 0.0494,
+    "ECE": 0.0061,
+    "precision": 0.7818,
+    "recall": 0.0172,
+    "F1": 0.0336,
+    "TP": 43,
+    "FP": 12,
+    "FN": 2464,
+    "TN": 34981
+  },
+  "test_isotonic": {
+    "AUC": 0.8647,
+    "PR_AUC": 0.3827,
+    "KS": 0.5706,
+    "Brier": 0.0491,
+    "ECE": 0.0031,
+    "precision": 0.5888,
+    "recall": 0.1588,
+    "F1": 0.2501,
+    "TP": 398,
+    "FP": 278,
+    "FN": 2109,
+    "TN": 34715
+  }
+}

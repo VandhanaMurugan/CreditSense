@@ -1,0 +1,54 @@
+{
+  "note": "cost ratio r = cost(missed default)/cost(false alarm); assumption-driven sensitivity analysis",
+  "f1_opt_threshold_raw": 0.82,
+  "scenarios": {
+    "r=2": {
+      "theoretical_threshold_1_over_1_plus_r": 0.3333,
+      "empirical_cost_opt_threshold_calibration_set": 0.305,
+      "test_cost_per_1000": {
+        "raw_score_at_0.5 (Phase 1 default)": 223.68,
+        "raw_score_at_F1_opt_threshold": 116.85,
+        "calibrated_at_theoretical_threshold": 109.95,
+        "calibrated_at_empirical_threshold": 109.89
+      },
+      "decline_rate_test_at_empirical": 0.0507,
+      "recall_test_at_empirical": 0.3718
+    },
+    "r=5": {
+      "theoretical_threshold_1_over_1_plus_r": 0.1667,
+      "empirical_cost_opt_threshold_calibration_set": 0.155,
+      "test_cost_per_1000": {
+        "raw_score_at_0.5 (Phase 1 default)": 268.24,
+        "raw_score_at_F1_opt_threshold": 216.29,
+        "calibrated_at_theoretical_threshold": 212.67,
+        "calibrated_at_empirical_threshold": 212.35
+      },
+      "decline_rate_test_at_empirical": 0.0966,
+      "recall_test_at_empirical": 0.5449
+    },
+    "r=10": {
+      "theoretical_threshold_1_over_1_plus_r": 0.0909,
+      "empirical_cost_opt_threshold_calibration_set": 0.085,
+      "test_cost_per_1000": {
+        "raw_score_at_0.5 (Phase 1 default)": 342.51,
+        "raw_score_at_F1_opt_threshold": 382.03,
+        "calibrated_at_theoretical_threshold": 333.44,
+        "calibrated_at_empirical_threshold": 333.57
+      },
+      "decline_rate_test_at_empirical": 0.2024,
+      "recall_test_at_empirical": 0.7308
+    },
+    "r=20": {
+      "theoretical_threshold_1_over_1_plus_r": 0.0476,
+      "empirical_cost_opt_threshold_calibration_set": 0.035,
+      "test_cost_per_1000": {
+        "raw_score_at_0.5 (Phase 1 default)": 491.04,
+        "raw_score_at_F1_opt_threshold": 713.49,
+        "calibrated_at_theoretical_threshold": 483.39,
+        "calibrated_at_empirical_threshold": 483.44
+      },
+      "decline_rate_test_at_empirical": 0.3509,
+      "recall_test_at_empirical": 0.858
+    }
+  }
+}

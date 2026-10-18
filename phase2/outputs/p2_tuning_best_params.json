@@ -1,0 +1,31 @@
+{
+  "xgb": {
+    "params": {
+      "subsample": 0.85,
+      "n_estimators": 300,
+      "min_child_weight": 5,
+      "max_depth": 3,
+      "learning_rate": 0.03,
+      "colsample_bytree": 0.7
+    },
+    "cv_pr_auc_subsample": 0.3947
+  },
+  "rf": {
+    "params": {
+      "n_estimators": 300,
+      "min_samples_leaf": 50,
+      "max_depth": 12
+    },
+    "cv_pr_auc_subsample": 0.3883
+  },
+  "gb": {
+    "params": {
+      "subsample": 0.7,
+      "n_estimators": 200,
+      "min_samples_leaf": 100,
+      "max_depth": 3,
+      "learning_rate": 0.03
+    },
+    "cv_pr_auc_subsample": 0.3912
+  }
+}

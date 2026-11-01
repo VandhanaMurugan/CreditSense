@@ -4,27 +4,27 @@
   "scenarios": {
     "r=2": {
       "theoretical_threshold_1_over_1_plus_r": 0.3333,
-      "empirical_cost_opt_threshold_calibration_set": 0.305,
+      "empirical_cost_opt_threshold_calibration_set": 0.355,
       "test_cost_per_1000": {
         "raw_score_at_0.5 (Phase 1 default)": 223.68,
         "raw_score_at_F1_opt_threshold": 116.85,
-        "calibrated_at_theoretical_threshold": 109.95,
-        "calibrated_at_empirical_threshold": 109.89
+        "calibrated_at_theoretical_threshold": 110.72,
+        "calibrated_at_empirical_threshold": 110.08
       },
-      "decline_rate_test_at_empirical": 0.0507,
-      "recall_test_at_empirical": 0.3718
+      "decline_rate_test_at_empirical": 0.0515,
+      "recall_test_at_empirical": 0.3746
     },
     "r=5": {
       "theoretical_threshold_1_over_1_plus_r": 0.1667,
-      "empirical_cost_opt_threshold_calibration_set": 0.155,
+      "empirical_cost_opt_threshold_calibration_set": 0.22,
       "test_cost_per_1000": {
         "raw_score_at_0.5 (Phase 1 default)": 268.24,
         "raw_score_at_F1_opt_threshold": 216.29,
-        "calibrated_at_theoretical_threshold": 212.67,
-        "calibrated_at_empirical_threshold": 212.35
+        "calibrated_at_theoretical_threshold": 211.79,
+        "calibrated_at_empirical_threshold": 212.4
       },
-      "decline_rate_test_at_empirical": 0.0966,
-      "recall_test_at_empirical": 0.5449
+      "decline_rate_test_at_empirical": 0.0972,
+      "recall_test_at_empirical": 0.5461
     },
     "r=10": {
       "theoretical_threshold_1_over_1_plus_r": 0.0909,
@@ -32,11 +32,11 @@
       "test_cost_per_1000": {
         "raw_score_at_0.5 (Phase 1 default)": 342.51,
         "raw_score_at_F1_opt_threshold": 382.03,
-        "calibrated_at_theoretical_threshold": 333.44,
-        "calibrated_at_empirical_threshold": 333.57
+        "calibrated_at_theoretical_threshold": 332.08,
+        "calibrated_at_empirical_threshold": 333.17
       },
-      "decline_rate_test_at_empirical": 0.2024,
-      "recall_test_at_empirical": 0.7308
+      "decline_rate_test_at_empirical": 0.2082,
+      "recall_test_at_empirical": 0.7391
     },
     "r=20": {
       "theoretical_threshold_1_over_1_plus_r": 0.0476,
@@ -44,11 +44,11 @@
       "test_cost_per_1000": {
         "raw_score_at_0.5 (Phase 1 default)": 491.04,
         "raw_score_at_F1_opt_threshold": 713.49,
-        "calibrated_at_theoretical_threshold": 483.39,
-        "calibrated_at_empirical_threshold": 483.44
+        "calibrated_at_theoretical_threshold": 482.21,
+        "calibrated_at_empirical_threshold": 484.91
       },
-      "decline_rate_test_at_empirical": 0.3509,
-      "recall_test_at_empirical": 0.858
+      "decline_rate_test_at_empirical": 0.3558,
+      "recall_test_at_empirical": 0.8604
     }
   }
 }

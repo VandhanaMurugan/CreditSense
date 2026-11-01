@@ -2,8 +2,8 @@
 
 Class weighting makes raw scores over-estimate default probability (they rank well but are not PDs).
 Protocol (leak-safe): split TRAIN 80/20 -> fit the tuned, weighted stack on 80% -> learn the calibration map on
-the 20% hold-out -> report on the untouched TEST set. Method (Platt vs isotonic) is chosen by 5-fold Brier on the
-calibration hold-out only.
+the 20% hold-out -> report on the untouched TEST set. Method rule (fixed before looking at test): Platt unless isotonic
+improves 5-fold Brier on the calibration hold-out by more than 0.001.
 """
 import json, numpy as np, matplotlib
 matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -37,7 +37,8 @@ for name, fitter in [("platt", fit_platt), ("isotonic", fit_iso)]:
     for a, b in StratifiedKFold(5, shuffle=True, random_state=SEED).split(raw_cal, yc):
         sc.append(brier_score_loss(yc[b], fitter(raw_cal[a], yc[a])(raw_cal[b])))
     cv_brier[name] = round(float(np.mean(sc)), 5)
-chosen = min(cv_brier, key=cv_brier.get)
+# Pre-stated rule: prefer Platt (smooth, preserves ranking) unless isotonic improves Brier by more than 0.001
+chosen = "isotonic" if cv_brier["platt"] - cv_brier["isotonic"] > 0.001 else "platt"
 print("5-fold Brier on calibration hold-out:", cv_brier, "-> chosen:", chosen, flush=True)
 fns = {"platt": fit_platt(raw_cal, yc), "isotonic": fit_iso(raw_cal, yc)}
 cal_cal, cal_te = fns[chosen](raw_cal), fns[chosen](raw_te)

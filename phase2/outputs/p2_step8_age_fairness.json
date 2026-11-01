@@ -1,0 +1,83 @@
+{
+  "alpha": 0.1,
+  "bands": {
+    "<30": {
+      "n": 2219,
+      "default_rate": 0.1253,
+      "mean_predicted_pd": 0.116,
+      "ECE_in_band": 0.0208,
+      "AUC": 0.8475,
+      "referral_rate": 0.4466,
+      "defaulter_coverage": 0.9712,
+      "decline_rate_r=5": 0.2276,
+      "recall_r=5": 0.7014,
+      "decline_rate_r=10": 0.4047,
+      "recall_r=10": 0.8597
+    },
+    "30-39": {
+      "n": 5783,
+      "default_rate": 0.1048,
+      "mean_predicted_pd": 0.102,
+      "ECE_in_band": 0.0089,
+      "AUC": 0.8386,
+      "referral_rate": 0.3934,
+      "defaulter_coverage": 0.934,
+      "decline_rate_r=5": 0.2044,
+      "recall_r=5": 0.6749,
+      "decline_rate_r=10": 0.3329,
+      "recall_r=10": 0.8003
+    },
+    "40-49": {
+      "n": 8623,
+      "default_rate": 0.0848,
+      "mean_predicted_pd": 0.084,
+      "ECE_in_band": 0.0029,
+      "AUC": 0.843,
+      "referral_rate": 0.3745,
+      "defaulter_coverage": 0.9152,
+      "decline_rate_r=5": 0.1635,
+      "recall_r=5": 0.6416,
+      "decline_rate_r=10": 0.2547,
+      "recall_r=10": 0.7415
+    },
+    "50-59": {
+      "n": 8762,
+      "default_rate": 0.0613,
+      "mean_predicted_pd": 0.0622,
+      "ECE_in_band": 0.0065,
+      "AUC": 0.8481,
+      "referral_rate": 0.3144,
+      "defaulter_coverage": 0.8808,
+      "decline_rate_r=5": 0.11,
+      "recall_r=5": 0.5587,
+      "decline_rate_r=10": 0.1719,
+      "recall_r=10": 0.6574
+    },
+    "60-69": {
+      "n": 7300,
+      "default_rate": 0.0338,
+      "mean_predicted_pd": 0.0382,
+      "ECE_in_band": 0.0044,
+      "AUC": 0.8631,
+      "referral_rate": 0.2062,
+      "defaulter_coverage": 0.8178,
+      "decline_rate_r=5": 0.0629,
+      "recall_r=5": 0.5223,
+      "decline_rate_r=10": 0.0915,
+      "recall_r=10": 0.6194
+    },
+    "70+": {
+      "n": 4813,
+      "default_rate": 0.0224,
+      "mean_predicted_pd": 0.0234,
+      "ECE_in_band": 0.0034,
+      "AUC": 0.8808,
+      "referral_rate": 0.1259,
+      "defaulter_coverage": 0.75,
+      "decline_rate_r=5": 0.0301,
+      "recall_r=5": 0.3796,
+      "decline_rate_r=10": 0.0505,
+      "recall_r=10": 0.4722
+    }
+  }
+}

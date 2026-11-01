@@ -1,0 +1,146 @@
+{
+  "German": {
+    "n": 1000,
+    "positive_rate": 0.3,
+    "folds": 25,
+    "best_single_tree": "RF",
+    "mean_AUC": {
+      "RF": 0.7939,
+      "GB": 0.7805,
+      "XGB": 0.7927,
+      "LR": 0.7864,
+      "Stack_trees": 0.7965,
+      "Stack_trees_LR": 0.7982
+    },
+    "sd_AUC_over_folds": {
+      "RF": 0.0277,
+      "GB": 0.0284,
+      "XGB": 0.0313,
+      "LR": 0.0332,
+      "Stack_trees": 0.0291,
+      "Stack_trees_LR": 0.0299
+    },
+    "mean_PR_AUC": {
+      "RF": 0.6387,
+      "GB": 0.6073,
+      "XGB": 0.6356,
+      "LR": 0.6186,
+      "Stack_trees": 0.6417,
+      "Stack_trees_LR": 0.6407
+    },
+    "tests_AUC_nadeau_bengio": {
+      "Stack_trees - RF": {
+        "mean_diff": 0.0025,
+        "CI95": [
+          -0.0065,
+          0.0116
+        ],
+        "p_value": 0.5685
+      },
+      "Stack_trees - LR": {
+        "mean_diff": 0.0101,
+        "CI95": [
+          -0.0056,
+          0.0258
+        ],
+        "p_value": 0.1986
+      },
+      "RF - LR": {
+        "mean_diff": 0.0075,
+        "CI95": [
+          -0.0112,
+          0.0263
+        ],
+        "p_value": 0.4162
+      },
+      "Stack_trees_LR - Stack_trees": {
+        "mean_diff": 0.0017,
+        "CI95": [
+          -0.0036,
+          0.007
+        ],
+        "p_value": 0.5105
+      },
+      "Stack_trees_LR - LR": {
+        "mean_diff": 0.0118,
+        "CI95": [
+          0.0005,
+          0.0231
+        ],
+        "p_value": 0.0421
+      }
+    }
+  },
+  "Australian": {
+    "n": 690,
+    "positive_rate": 0.4449,
+    "folds": 25,
+    "best_single_tree": "XGB",
+    "mean_AUC": {
+      "RF": 0.9348,
+      "GB": 0.9341,
+      "XGB": 0.9369,
+      "LR": 0.9267,
+      "Stack_trees": 0.938,
+      "Stack_trees_LR": 0.9386
+    },
+    "sd_AUC_over_folds": {
+      "RF": 0.0213,
+      "GB": 0.0242,
+      "XGB": 0.0214,
+      "LR": 0.0169,
+      "Stack_trees": 0.0216,
+      "Stack_trees_LR": 0.0195
+    },
+    "mean_PR_AUC": {
+      "RF": 0.9204,
+      "GB": 0.9168,
+      "XGB": 0.923,
+      "LR": 0.9148,
+      "Stack_trees": 0.9249,
+      "Stack_trees_LR": 0.9283
+    },
+    "tests_AUC_nadeau_bengio": {
+      "Stack_trees - XGB": {
+        "mean_diff": 0.0011,
+        "CI95": [
+          -0.0034,
+          0.0056
+        ],
+        "p_value": 0.6272
+      },
+      "Stack_trees - LR": {
+        "mean_diff": 0.0112,
+        "CI95": [
+          -0.0012,
+          0.0237
+        ],
+        "p_value": 0.075
+      },
+      "XGB - LR": {
+        "mean_diff": 0.0102,
+        "CI95": [
+          -0.002,
+          0.0224
+        ],
+        "p_value": 0.0981
+      },
+      "Stack_trees_LR - Stack_trees": {
+        "mean_diff": 0.0006,
+        "CI95": [
+          -0.0025,
+          0.0038
+        ],
+        "p_value": 0.6836
+      },
+      "Stack_trees_LR - LR": {
+        "mean_diff": 0.0119,
+        "CI95": [
+          0.0014,
+          0.0223
+        ],
+        "p_value": 0.0276
+      }
+    }
+  }
+}

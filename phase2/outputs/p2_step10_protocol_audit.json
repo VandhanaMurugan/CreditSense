@@ -1,0 +1,46 @@
+{
+  "German": {
+    "P0 leak-safe": {
+      "RF": 0.7919,
+      "XGB": 0.7972,
+      "LR": 0.7862
+    },
+    "P1 SMOTE before CV": {
+      "RF": 0.9226,
+      "XGB": 0.9153,
+      "LR": 0.8251
+    },
+    "P2 select+scale before CV": {
+      "RF": 0.7426,
+      "XGB": 0.7488,
+      "LR": 0.7571
+    },
+    "P3 both": {
+      "RF": 0.8374,
+      "XGB": 0.843,
+      "LR": 0.7826
+    }
+  },
+  "Taiwan": {
+    "P0 leak-safe": {
+      "RF": 0.7767,
+      "XGB": 0.7833,
+      "LR": 0.7241
+    },
+    "P1 SMOTE before CV": {
+      "RF": 0.9213,
+      "XGB": 0.8751,
+      "LR": 0.7351
+    },
+    "P2 select+scale before CV": {
+      "RF": 0.7651,
+      "XGB": 0.7761,
+      "LR": 0.7203
+    },
+    "P3 both": {
+      "RF": 0.8845,
+      "XGB": 0.8234,
+      "LR": 0.7261
+    }
+  }
+}

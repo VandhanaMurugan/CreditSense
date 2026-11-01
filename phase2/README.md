@@ -12,8 +12,10 @@ Phase 1 (`../pipeline`) reproduced the stacked ensemble. Phase 2 tests four hypo
 | N2 (H1) | `p2_step6_size_study.py` | Stack vs XGBoost vs logistic regression at 1k–30k training rows (GMSC) |
 | N3 (H3) | `p2_step7_conformal_referral.py` | Class-conditional split-conformal referral vs Chow's cost-optimal rule at matched rate |
 | N4 (H4) | `p2_step8_age_fairness.py` | Calibration, decisions, referral and coverage by age band |
+| N5 (H1) | `p2_step9_multidataset.py` | German / Australian / Taiwan (UCI): repeated stratified CV, LR / RF / GB / XGB / stacks, Nadeau–Bengio corrected t-tests |
+| N6 | `p2_step10_protocol_audit.py` | Evaluation-protocol audit: SMOTE before CV, whole-data scaling / feature selection vs leak-safe |
 
-Planned: N5 German / Australian / Taiwan datasets (H1), N6 reason codes and a scoring demo, a cost-weighted conformity score.
+Planned: reason codes and a scoring demo, a cost-weighted conformity score.
 
 ## Run
 ```bash
@@ -26,9 +28,14 @@ Steps 7 and 8 need the arrays saved by step 2; step 5 needs the Phase 1 LightGBM
 - **Calibration:** mean predicted default 0.327 → 0.067 (observed 0.067); Brier 0.146 → 0.049; ECE 0.260 → 0.006; ranking unchanged.
 - **Stack fix and tuning:** AUC 0.8647 → 0.8650 → 0.8657; PR-AUC flat; the paired difference C − A is not significant.
 - **H2:** adding logistic regression and MLP changes stack AUC by +0.0002 (95% CI −0.0001 to +0.0006). Supported.
-- **H1 (one dataset):** stack − XGBoost AUC shrinks from +0.017 (1k rows) to +0.001 (30k); a regularised logistic regression beats the tree stack up to ~3k rows and ties at 10k. Few repeats at large sizes; multi-dataset runs pending.
+- **H1 (one dataset):** stack − XGBoost AUC shrinks from +0.017 (1k rows) to +0.001 (30k); a regularised logistic regression beats the tree stack up to ~3k rows and ties at 10k. Few repeats at large sizes.
 - **H3:** coverage guarantee holds on test (e.g. 90.2% at α = 0.10), but the band is wide (30% referred) and costs up to 2.5× more than a cost-optimal band at the same rate; fewer defaulters are auto-approved (11.9% vs 17.5%). Cost claim rejected.
 - **H4:** calibration holds in every age band (ECE ≤ 0.021); defaulter coverage falls from 97.1% (<30) to 75.0% (70+) against a 90% target. An audit of outcomes, not a fairness claim.
 - **Cost threshold:** vs the Phase 1 default (0.5 on raw scores), cost per 1,000 falls 51% at r=2, 21% at r=5, 3% at r=10, 2% at r=20. Cost ratios are assumptions.
+
+- **H1 (UCI datasets, leak-safe repeated CV, fixed untuned settings):** the stack is never significantly better than its best tree model (German +0.003, Australian +0.001, Taiwan +0.002 AUC). Logistic regression is within noise of the stack on the two small sets but 0.061 behind on Taiwan. The base paper's Australian AUC is matched; German (0.797 vs 0.944) and Taiwan (0.785 vs 0.870) are not.
+- **Protocol audit:** oversampling the whole dataset before CV raises German RF AUC from 0.79 to 0.92 and Taiwan XGB from 0.78 to 0.875. Consistent with, not proof of, the base paper's protocol (which is not described). Taiwan used 1 repeat.
+
+UCI files go in `data/uci/` (see its README; not committed). Run steps 9–10 from `phase2/`.
 
 Tuning used a stratified 40,000-row subsample of the training split.

@@ -4,3 +4,5 @@ artifacts/
 *.joblib
 .venv/
 .DS_Store
+data/uci/*
+!data/uci/README.md

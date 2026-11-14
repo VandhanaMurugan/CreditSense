@@ -169,6 +169,19 @@ describe("helpers", () => {
   it("tells the user how to start the service when it is down", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => { throw new TypeError("Failed to fetch"); }));
     open("decision");
-    expect(await screen.findByRole("alert")).toHaveTextContent(/make serve/);
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent(/not running/);
+    expect(alert).toHaveTextContent(/uvicorn creditsense\.api:app/);
+  });
+  it("says the service is running but failed to load the model when it answers without a readable reply", async () => {
+    // A crash inside a request reaches the page as a failed fetch; the no-cors probe still gets through.
+    vi.stubGlobal("fetch", vi.fn(async (_url: string, init?: RequestInit) => {
+      if (init?.mode === "no-cors") return new Response(null);
+      throw new TypeError("Failed to fetch");
+    }));
+    open("decision");
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent(/is running, but it failed to load the model/);
+    expect(alert).toHaveTextContent(/terminal window/);
   });
 });

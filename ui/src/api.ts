@@ -71,6 +71,13 @@ function csvForm(csv: string | Blob, name = "upload.csv"): FormData {
   return form;
 }
 
+/** True if something is listening at the API address. A service that crashes inside a request answers without the
+ *  headers a browser needs, so the page sees the same "Failed to fetch" as when nothing is running; this probe (which
+ *  needs no readable answer, and asks for a route that does not load the model) tells the two apart. */
+export async function serviceReachable(): Promise<boolean> {
+  try { await fetch(API_BASE + "/openapi.json", { mode: "no-cors" }); return true; } catch { return false; }
+}
+
 export const api = {
   health: () => getJson<{ status: string; model_version: string }>("/health"),
   modelCard: () => getJson<ModelCard>("/model_card"),

@@ -7,8 +7,11 @@ Research evidence, About and limitations.
 ## Run
 
 ```bash
-# terminal 1, repository root
-make serve                      # API on http://127.0.0.1:8000
+# terminal 1, repository root (first time: create a virtual environment and install the pinned packages)
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt          # Windows: .venv\Scripts\python -m pip install -r requirements.txt
+.venv/bin/python -m uvicorn creditsense.api:app              # Windows: .venv\Scripts\python -m uvicorn creditsense.api:app
+                                                             # API on http://127.0.0.1:8000 (`make serve` does the same where make exists)
 
 # terminal 2
 cd ui

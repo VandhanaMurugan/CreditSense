@@ -1,6 +1,6 @@
 import os, numpy as np, pytest
-BUNDLE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "artifacts", "creditsense_bundle.joblib")
-pytestmark = pytest.mark.skipif(not os.path.exists(BUNDLE), reason="build the bundle first: make bundle")
+from creditsense.serve import DEFAULT_BUNDLE as BUNDLE          # artifacts/ if built, else the committed models/ bundle
+pytestmark = pytest.mark.skipif(not os.path.exists(BUNDLE), reason="no bundle: run `make bundle`")
 
 APP = {"RevolvingUtilizationOfUnsecuredLines": 0.45, "age": 42, "NumberOfTime30-59DaysPastDueNotWorse": 1,
        "NumberOfTime60-89DaysPastDueNotWorse": 0, "NumberOfTimes90DaysLate": 0, "NumberOfOpenCreditLinesAndLoans": 8,

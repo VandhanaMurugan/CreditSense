@@ -1,0 +1,52 @@
+{
+  "model": "WoE logistic scorecard (8 quantile bins for continuous attributes, 0/1/2/3/4+ for counts; 10 raw attributes)",
+  "test": {
+    "AUC": 0.858,
+    "PR_AUC": 0.3823,
+    "KS": 0.5538,
+    "Brier": 0.0503,
+    "ECE": 0.006,
+    "precision": 0.5734,
+    "recall": 0.1839,
+    "F1": 0.2785,
+    "TP": 461,
+    "FP": 343,
+    "FN": 2046,
+    "TN": 34650
+  },
+  "score_points_test": {
+    "p05": 515,
+    "median": 592,
+    "p95": 621
+  },
+  "coefficients": {
+    "RevolvingUtilizationOfUnsecuredLines": -0.623,
+    "age": -0.376,
+    "NumberOfTime30-59DaysPastDueNotWorse": -0.516,
+    "DebtRatio": -0.789,
+    "MonthlyIncome": -0.223,
+    "NumberOfOpenCreditLinesAndLoans": 0.105,
+    "NumberOfTimes90DaysLate": -0.53,
+    "NumberRealEstateLoansOrLines": -0.559,
+    "NumberOfTime60-89DaysPastDueNotWorse": -0.373,
+    "NumberOfDependents": -0.321
+  },
+  "main_policy_with_CreditSense_triage": {
+    "cost_per_1000": 264.14,
+    "approve_rate": 0.5557,
+    "refer_rate": 0.2038,
+    "decline_rate": 0.2406,
+    "defaulters_auto_approved": 0.0997,
+    "goods_auto_declined": 0.2037,
+    "default_rate_in_approved": 0.012
+  },
+  "two_way_cost_threshold": {
+    "cost_per_1000": 219.28,
+    "approve_rate": 0.9158,
+    "refer_rate": 0.0,
+    "decline_rate": 0.0842,
+    "defaulters_auto_approved": 0.5034,
+    "goods_auto_declined": 0.0547,
+    "default_rate_in_approved": 0.0367
+  }
+}

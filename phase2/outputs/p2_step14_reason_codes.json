@@ -1,0 +1,62 @@
+{
+  "n_explained": 500,
+  "seconds_per_applicant": 0.1413,
+  "additivity_abs_error": {
+    "max": 1.4238444185910026e-06,
+    "mean": 2.7749427295825633e-07
+  },
+  "stability_top1_agreement": {
+    "second_100_row_background": 0.926,
+    "third_100_row_background": 0.868
+  },
+  "stability_top3_jaccard_other_background": 0.984,
+  "xgb_only_shortcut_top1_agreement": 0.98,
+  "age_among_top4_drivers_share": 0.768,
+  "top_reason_frequency": {
+    "utilisation": 0.558,
+    "delinquency_history": 0.38,
+    "real_estate": 0.046,
+    "open_lines": 0.016
+  },
+  "example": {
+    "pd": 0.0332,
+    "reasons": [
+      {
+        "code": "utilisation",
+        "text": "High use of revolving credit limits",
+        "direction": "raises risk",
+        "contribution_logodds": 0.6054
+      },
+      {
+        "code": "delinquency_history",
+        "text": "Clean overall payment history",
+        "direction": "lowers risk",
+        "contribution_logodds": -0.247
+      },
+      {
+        "code": "open_lines",
+        "text": "Number of open credit lines and loans",
+        "direction": "lowers risk",
+        "contribution_logodds": -0.2101
+      },
+      {
+        "code": "real_estate",
+        "text": "Number of real-estate loans or lines",
+        "direction": "raises risk",
+        "contribution_logodds": 0.0462
+      }
+    ],
+    "inputs": {
+      "TotalPastDueEvents": 0.0,
+      "HasPastDueHistory": 0.0,
+      "UtilizationBucket": 1.0,
+      "RevolvingUtilizationOfUnsecuredLines": 0.49580409,
+      "NumberOfTimes90DaysLate": 0.0,
+      "NumberOfTime30-59DaysPastDueNotWorse": 0.0,
+      "NumberOfTime60-89DaysPastDueNotWorse": 0.0,
+      "age": 41.0,
+      "NumberRealEstateLoansOrLines": 2.0,
+      "NumberOfOpenCreditLinesAndLoans": 5.0
+    }
+  }
+}

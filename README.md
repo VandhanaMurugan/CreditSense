@@ -49,14 +49,26 @@ make run            # runs steps 1-5; outputs go to ./artifacts (git-ignored)
 ```
 Step 1 is the slowest (stacked model with internal CV). Random Forest and stacked-model metrics can move in the 3rd–4th decimal across library versions; gradient-boosting results, tiers and SHAP shares reproduced identically on the pinned versions.
 
+## Phase II service (branch `phase2`)
+```python
+from creditsense.serve import CreditSense          # build the bundle first: make bundle
+cs = CreditSense()
+cs.score({"RevolvingUtilizationOfUnsecuredLines": 0.45, "age": 42, "NumberOfTime30-59DaysPastDueNotWorse": 1,
+          "NumberOfTime60-89DaysPastDueNotWorse": 0, "NumberOfTimes90DaysLate": 0,
+          "NumberOfOpenCreditLinesAndLoans": 8, "NumberRealEstateLoansOrLines": 1},
+         policy={"r": 5, "c": 0.2, "rho": 0.2, "alpha": 0.10})
+# -> calibrated PD, risk tier, approve/refer/decline, thresholds, guarantee text, exact reasons, warnings
+```
+`make serve` exposes the same as a FastAPI service (`/score`, `/score_batch`, `/policy_simulation`, `/monitoring`, `/model_card`). Decision support only; see `phase2/README.md` for evidence and limits.
+
 ## Known limitations
 - The Gradient Boosting member inside the stack is fitted without `sample_weight` (scikit-learn's `StackingClassifier` does not forward it here), so it is not cost-weighted like the standalone GB. Fixing this by wrapping the members in a weighted pipeline is a planned improvement.
 - Single train/test split; no repeated CV or confidence intervals on test metrics yet.
 - Probabilities are not explicitly calibrated; tiers rely on ranking, not absolute PD.
 - Single dataset; no out-of-time validation or fairness audit.
 
-## Planned (Phase 2)
-Probability calibration (Platt/isotonic) and reliability curves, repeated stratified CV with bootstrap CIs, weighted stacking fix, cost-based threshold selection using an explicit false-negative/false-positive cost matrix, and monitoring for drift (PSI).
+## Phase 2 (branch `phase2`)
+Done: calibration, bootstrap and corrected significance tests, weighted stacking fix, cost-based thresholds, size and diversity studies, three UCI datasets, protocol audits, the CreditSense triage with a guaranteed cap, exact reason codes, a scoring service and API, monitoring with recalibration, and a scorecard baseline. Remaining: the user interface and the final write-up. See `phase2/README.md`.
 
 ## Reference
 Emmanuel, Sun & Wang (2024), stacked-ensemble credit risk modelling.

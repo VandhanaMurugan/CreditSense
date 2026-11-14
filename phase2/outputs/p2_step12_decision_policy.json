@@ -1,0 +1,1117 @@
+{
+  "assumptions": {
+    "cost_units": "1 = one wrongly declined good borrower",
+    "c_referral": 0.2,
+    "referral_budget": 0.2,
+    "analyst_accuracy": "referred cases assumed decided correctly"
+  },
+  "calibration_defaulters": 1504,
+  "caps": {
+    "alpha=0.05": 0.0138,
+    "alpha=0.10": 0.0221,
+    "alpha=0.10 PAC95": 0.0197,
+    "alpha=0.20": 0.0557
+  },
+  "A_main": {
+    "r=5,c=0.1": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 268.24,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 211.79,
+        "approve_rate": 0.8756,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1244,
+        "defaulters_auto_approved": 0.3845,
+        "goods_auto_declined": 0.0892,
+        "default_rate_in_approved": 0.0294
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 75.34,
+        "approve_rate": 0.5412,
+        "refer_rate": 0.4588,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0882,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0109
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 111.04,
+        "approve_rate": 0.8016,
+        "refer_rate": 0.1984,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0228
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 154.62,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 75.34,
+        "approve_rate": 0.5412,
+        "refer_rate": 0.4588,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0882,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0109
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 237.03,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 256.09,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 344.65,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    },
+    "r=5,c=0.2": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 268.24,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 211.79,
+        "approve_rate": 0.8756,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1244,
+        "defaulters_auto_approved": 0.3845,
+        "goods_auto_declined": 0.0892,
+        "default_rate_in_approved": 0.0294
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 117.51,
+        "approve_rate": 0.6658,
+        "refer_rate": 0.3342,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.1516,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0152
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 130.89,
+        "approve_rate": 0.8016,
+        "refer_rate": 0.1984,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0228
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 184.91,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 120.2,
+        "approve_rate": 0.563,
+        "refer_rate": 0.437,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 257.21,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 276.28,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 364.47,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    },
+    "r=5,c=0.3": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 268.24,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 211.79,
+        "approve_rate": 0.8756,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1244,
+        "defaulters_auto_approved": 0.3845,
+        "goods_auto_declined": 0.0892,
+        "default_rate_in_approved": 0.0294
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 147.46,
+        "approve_rate": 0.7351,
+        "refer_rate": 0.2649,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2034,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0185
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 150.73,
+        "approve_rate": 0.8016,
+        "refer_rate": 0.1984,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0228
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 215.21,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 163.9,
+        "approve_rate": 0.563,
+        "refer_rate": 0.437,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 277.39,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 296.48,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 384.29,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    },
+    "r=10,c=0.1": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 342.51,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 332.08,
+        "approve_rate": 0.8017,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1983,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.1604,
+        "default_rate_in_approved": 0.0228
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 86.98,
+        "approve_rate": 0.2689,
+        "refer_rate": 0.7311,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0207,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0052
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 192.49,
+        "approve_rate": 0.749,
+        "refer_rate": 0.1974,
+        "decline_rate": 0.0536,
+        "defaulters_auto_approved": 0.2166,
+        "goods_auto_declined": 0.0299,
+        "default_rate_in_approved": 0.0193
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 187.42,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 86.98,
+        "approve_rate": 0.2689,
+        "refer_rate": 0.7311,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0207,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0052
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 269.83,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 285.02,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 363.31,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    },
+    "r=10,c=0.2": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 342.51,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 332.08,
+        "approve_rate": 0.8017,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1983,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.1604,
+        "default_rate_in_approved": 0.0228
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 150.69,
+        "approve_rate": 0.5412,
+        "refer_rate": 0.4588,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0882,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0109
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 212.22,
+        "approve_rate": 0.749,
+        "refer_rate": 0.1974,
+        "decline_rate": 0.0536,
+        "defaulters_auto_approved": 0.2166,
+        "goods_auto_declined": 0.0299,
+        "default_rate_in_approved": 0.0193
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 217.71,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 150.69,
+        "approve_rate": 0.5412,
+        "refer_rate": 0.4588,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0882,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0109
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 290.01,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 305.22,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 383.14,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    },
+    "r=10,c=0.3": {
+      "Phase I rule (raw score >= 0.5)": {
+        "cost_per_1000": 342.51,
+        "approve_rate": 0.754,
+        "refer_rate": 0.0,
+        "decline_rate": 0.246,
+        "defaulters_auto_approved": 0.2222,
+        "goods_auto_declined": 0.2079,
+        "default_rate_in_approved": 0.0197
+      },
+      "Two-way cost threshold 1/(1+r)": {
+        "cost_per_1000": 332.08,
+        "approve_rate": 0.8017,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1983,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.1604,
+        "default_rate_in_approved": 0.0228
+      },
+      "Chow, unlimited referrals": {
+        "cost_per_1000": 198.01,
+        "approve_rate": 0.6191,
+        "refer_rate": 0.3809,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.1252,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0135
+      },
+      "Chow, 20% referral budget": {
+        "cost_per_1000": 231.96,
+        "approve_rate": 0.749,
+        "refer_rate": 0.1974,
+        "decline_rate": 0.0536,
+        "defaulters_auto_approved": 0.2166,
+        "goods_auto_declined": 0.0299,
+        "default_rate_in_approved": 0.0193
+      },
+      "Symmetric conformal alpha=0.10 (H3)": {
+        "cost_per_1000": 248.01,
+        "approve_rate": 0.563,
+        "refer_rate": 0.303,
+        "decline_rate": 0.134,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0981,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, unlimited": {
+        "cost_per_1000": 196.7,
+        "approve_rate": 0.563,
+        "refer_rate": 0.437,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10, 20% budget": {
+        "cost_per_1000": 310.19,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "CreditSense alpha=0.10 (95% PAC), 20% budget": {
+        "cost_per_1000": 325.41,
+        "approve_rate": 0.5381,
+        "refer_rate": 0.2019,
+        "decline_rate": 0.2599,
+        "defaulters_auto_approved": 0.0866,
+        "goods_auto_declined": 0.2218,
+        "default_rate_in_approved": 0.0108
+      },
+      "CreditSense alpha=0.05, 20% budget": {
+        "cost_per_1000": 402.96,
+        "approve_rate": 0.4378,
+        "refer_rate": 0.1982,
+        "decline_rate": 0.364,
+        "defaulters_auto_approved": 0.0558,
+        "goods_auto_declined": 0.3281,
+        "default_rate_in_approved": 0.0085
+      }
+    }
+  },
+  "B_price_of_guarantee_r5_c0.2": {
+    "rho=0.1": {
+      "chow_same_budget": {
+        "cost_per_1000": 159.01,
+        "approve_rate": 0.8525,
+        "refer_rate": 0.0986,
+        "decline_rate": 0.0488,
+        "defaulters_auto_approved": 0.343,
+        "goods_auto_declined": 0.0264,
+        "default_rate_in_approved": 0.0269
+      },
+      "creditsense_by_alpha": {
+        "0.02": {
+          "cost_per_1000": 635.23,
+          "approve_rate": 0.2251,
+          "refer_rate": 0.1006,
+          "decline_rate": 0.6743,
+          "defaulters_auto_approved": 0.0172,
+          "goods_auto_declined": 0.653,
+          "default_rate_in_approved": 0.0051,
+          "premium_vs_chow_per_1000": 476.22
+        },
+        "0.05": {
+          "cost_per_1000": 439.56,
+          "approve_rate": 0.4378,
+          "refer_rate": 0.1003,
+          "decline_rate": 0.4619,
+          "defaulters_auto_approved": 0.0558,
+          "goods_auto_declined": 0.4295,
+          "default_rate_in_approved": 0.0085,
+          "premium_vs_chow_per_1000": 280.55
+        },
+        "0.08": {
+          "cost_per_1000": 366.26,
+          "approve_rate": 0.5249,
+          "refer_rate": 0.097,
+          "decline_rate": 0.3781,
+          "defaulters_auto_approved": 0.0814,
+          "goods_auto_declined": 0.3426,
+          "default_rate_in_approved": 0.0104,
+          "premium_vs_chow_per_1000": 207.25
+        },
+        "0.10": {
+          "cost_per_1000": 333.96,
+          "approve_rate": 0.563,
+          "refer_rate": 0.0987,
+          "decline_rate": 0.3382,
+          "defaulters_auto_approved": 0.0981,
+          "goods_auto_declined": 0.3016,
+          "default_rate_in_approved": 0.0117,
+          "premium_vs_chow_per_1000": 174.95
+        },
+        "0.15": {
+          "cost_per_1000": 256.33,
+          "approve_rate": 0.6606,
+          "refer_rate": 0.1019,
+          "decline_rate": 0.2375,
+          "defaulters_auto_approved": 0.1488,
+          "goods_auto_declined": 0.1996,
+          "default_rate_in_approved": 0.0151,
+          "premium_vs_chow_per_1000": 97.32
+        },
+        "0.20": {
+          "cost_per_1000": 216.5,
+          "approve_rate": 0.7218,
+          "refer_rate": 0.0989,
+          "decline_rate": 0.1793,
+          "defaulters_auto_approved": 0.1919,
+          "goods_auto_declined": 0.1421,
+          "default_rate_in_approved": 0.0178,
+          "premium_vs_chow_per_1000": 57.49
+        },
+        "0.30": {
+          "cost_per_1000": 172.49,
+          "approve_rate": 0.8112,
+          "refer_rate": 0.0968,
+          "decline_rate": 0.0919,
+          "defaulters_auto_approved": 0.29,
+          "goods_auto_declined": 0.0602,
+          "default_rate_in_approved": 0.0239,
+          "premium_vs_chow_per_1000": 13.48
+        }
+      }
+    },
+    "rho=0.2": {
+      "chow_same_budget": {
+        "cost_per_1000": 130.89,
+        "approve_rate": 0.8016,
+        "refer_rate": 0.1984,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0228
+      },
+      "creditsense_by_alpha": {
+        "0.02": {
+          "cost_per_1000": 556.77,
+          "approve_rate": 0.2251,
+          "refer_rate": 0.2006,
+          "decline_rate": 0.5742,
+          "defaulters_auto_approved": 0.0172,
+          "goods_auto_declined": 0.5475,
+          "default_rate_in_approved": 0.0051,
+          "premium_vs_chow_per_1000": 425.88
+        },
+        "0.05": {
+          "cost_per_1000": 364.47,
+          "approve_rate": 0.4378,
+          "refer_rate": 0.1982,
+          "decline_rate": 0.364,
+          "defaulters_auto_approved": 0.0558,
+          "goods_auto_declined": 0.3281,
+          "default_rate_in_approved": 0.0085,
+          "premium_vs_chow_per_1000": 233.58
+        },
+        "0.08": {
+          "cost_per_1000": 287.47,
+          "approve_rate": 0.5249,
+          "refer_rate": 0.2012,
+          "decline_rate": 0.2739,
+          "defaulters_auto_approved": 0.0814,
+          "goods_auto_declined": 0.2358,
+          "default_rate_in_approved": 0.0104,
+          "premium_vs_chow_per_1000": 156.58
+        },
+        "0.10": {
+          "cost_per_1000": 257.21,
+          "approve_rate": 0.563,
+          "refer_rate": 0.2018,
+          "decline_rate": 0.2352,
+          "defaulters_auto_approved": 0.0981,
+          "goods_auto_declined": 0.1972,
+          "default_rate_in_approved": 0.0117,
+          "premium_vs_chow_per_1000": 126.32
+        },
+        "0.15": {
+          "cost_per_1000": 186.0,
+          "approve_rate": 0.6606,
+          "refer_rate": 0.2001,
+          "decline_rate": 0.1393,
+          "defaulters_auto_approved": 0.1488,
+          "goods_auto_declined": 0.1031,
+          "default_rate_in_approved": 0.0151,
+          "premium_vs_chow_per_1000": 55.11
+        },
+        "0.20": {
+          "cost_per_1000": 151.58,
+          "approve_rate": 0.7218,
+          "refer_rate": 0.1975,
+          "decline_rate": 0.0807,
+          "defaulters_auto_approved": 0.1919,
+          "goods_auto_declined": 0.0514,
+          "default_rate_in_approved": 0.0178,
+          "premium_vs_chow_per_1000": 20.69
+        },
+        "0.30": {
+          "cost_per_1000": 130.89,
+          "approve_rate": 0.8016,
+          "refer_rate": 0.1984,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.2728,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0228,
+          "premium_vs_chow_per_1000": 0.0
+        }
+      }
+    },
+    "rho=0.3": {
+      "chow_same_budget": {
+        "cost_per_1000": 118.84,
+        "approve_rate": 0.7018,
+        "refer_rate": 0.2982,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.1771,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0169
+      },
+      "creditsense_by_alpha": {
+        "0.02": {
+          "cost_per_1000": 477.35,
+          "approve_rate": 0.2251,
+          "refer_rate": 0.3023,
+          "decline_rate": 0.4725,
+          "defaulters_auto_approved": 0.0172,
+          "goods_auto_declined": 0.4406,
+          "default_rate_in_approved": 0.0051,
+          "premium_vs_chow_per_1000": 358.51
+        },
+        "0.05": {
+          "cost_per_1000": 286.08,
+          "approve_rate": 0.4378,
+          "refer_rate": 0.3023,
+          "decline_rate": 0.2599,
+          "defaulters_auto_approved": 0.0558,
+          "goods_auto_declined": 0.2218,
+          "default_rate_in_approved": 0.0085,
+          "premium_vs_chow_per_1000": 167.24
+        },
+        "0.08": {
+          "cost_per_1000": 216.07,
+          "approve_rate": 0.5249,
+          "refer_rate": 0.2997,
+          "decline_rate": 0.1754,
+          "defaulters_auto_approved": 0.0814,
+          "goods_auto_declined": 0.1382,
+          "default_rate_in_approved": 0.0104,
+          "premium_vs_chow_per_1000": 97.23
+        },
+        "0.10": {
+          "cost_per_1000": 187.05,
+          "approve_rate": 0.563,
+          "refer_rate": 0.3,
+          "decline_rate": 0.137,
+          "defaulters_auto_approved": 0.0981,
+          "goods_auto_declined": 0.101,
+          "default_rate_in_approved": 0.0117,
+          "premium_vs_chow_per_1000": 68.21
+        },
+        "0.15": {
+          "cost_per_1000": 128.74,
+          "approve_rate": 0.6606,
+          "refer_rate": 0.2993,
+          "decline_rate": 0.0401,
+          "defaulters_auto_approved": 0.1488,
+          "goods_auto_declined": 0.0205,
+          "default_rate_in_approved": 0.0151,
+          "premium_vs_chow_per_1000": 9.9
+        },
+        "0.20": {
+          "cost_per_1000": 118.84,
+          "approve_rate": 0.7018,
+          "refer_rate": 0.2982,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.1771,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0169,
+          "premium_vs_chow_per_1000": 0.0
+        },
+        "0.30": {
+          "cost_per_1000": 118.84,
+          "approve_rate": 0.7018,
+          "refer_rate": 0.2982,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.1771,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0169,
+          "premium_vs_chow_per_1000": 0.0
+        }
+      }
+    },
+    "unlimited": {
+      "chow_same_budget": {
+        "cost_per_1000": 117.51,
+        "approve_rate": 0.6658,
+        "refer_rate": 0.3342,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.1516,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0152
+      },
+      "creditsense_by_alpha": {
+        "0.02": {
+          "cost_per_1000": 160.7,
+          "approve_rate": 0.2251,
+          "refer_rate": 0.7749,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.0172,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0051,
+          "premium_vs_chow_per_1000": 43.19
+        },
+        "0.05": {
+          "cost_per_1000": 131.11,
+          "approve_rate": 0.4378,
+          "refer_rate": 0.5622,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.0558,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0085,
+          "premium_vs_chow_per_1000": 13.6
+        },
+        "0.08": {
+          "cost_per_1000": 122.22,
+          "approve_rate": 0.5249,
+          "refer_rate": 0.4751,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.0814,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0104,
+          "premium_vs_chow_per_1000": 4.71
+        },
+        "0.10": {
+          "cost_per_1000": 120.2,
+          "approve_rate": 0.563,
+          "refer_rate": 0.437,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.0981,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0117,
+          "premium_vs_chow_per_1000": 2.69
+        },
+        "0.15": {
+          "cost_per_1000": 117.62,
+          "approve_rate": 0.6606,
+          "refer_rate": 0.3394,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.1488,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0151,
+          "premium_vs_chow_per_1000": 0.11
+        },
+        "0.20": {
+          "cost_per_1000": 117.51,
+          "approve_rate": 0.6658,
+          "refer_rate": 0.3342,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.1516,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0152,
+          "premium_vs_chow_per_1000": 0.0
+        },
+        "0.30": {
+          "cost_per_1000": 117.51,
+          "approve_rate": 0.6658,
+          "refer_rate": 0.3342,
+          "decline_rate": 0.0,
+          "defaulters_auto_approved": 0.1516,
+          "goods_auto_declined": 0.0,
+          "default_rate_in_approved": 0.0152,
+          "premium_vs_chow_per_1000": 0.0
+        }
+      }
+    }
+  },
+  "D_validity_500_splits": {
+    "alpha=0.05": {
+      "marginal": {
+        "mean": 0.0496,
+        "p95": 0.0617,
+        "share_of_splits_above_alpha": 0.486
+      },
+      "pac": {
+        "mean": 0.041,
+        "p95": 0.0519,
+        "share_of_splits_above_alpha": 0.068
+      },
+      "chow_budget": {
+        "mean": 0.2752,
+        "p95": 0.2861,
+        "share_of_splits_above_alpha": 1.0
+      }
+    },
+    "alpha=0.1": {
+      "marginal": {
+        "mean": 0.0994,
+        "p95": 0.1156,
+        "share_of_splits_above_alpha": 0.464
+      },
+      "pac": {
+        "mean": 0.087,
+        "p95": 0.1028,
+        "share_of_splits_above_alpha": 0.086
+      },
+      "chow_budget": {
+        "mean": 0.2752,
+        "p95": 0.2861,
+        "share_of_splits_above_alpha": 1.0
+      }
+    }
+  },
+  "D_note": "Each split re-fits Platt on 22,500 rows and tests on 37,500. Test miss rates include binomial noise from ~2,500 test defaulters, so the PAC exceedance share can sit slightly above delta=0.05.",
+  "E_label_shift_main_config": {
+    "base_rate_x0.5": {
+      "observed_default_rate": 0.0334,
+      "mean_predicted_pd": 0.0606,
+      "ECE": 0.0271,
+      "chow_budget": {
+        "cost_per_1000": 81.99,
+        "approve_rate": 0.818,
+        "refer_rate": 0.182,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2727,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0111
+      },
+      "creditsense": {
+        "cost_per_1000": 249.06,
+        "approve_rate": 0.577,
+        "refer_rate": 0.2038,
+        "decline_rate": 0.2192,
+        "defaulters_auto_approved": 0.0885,
+        "goods_auto_declined": 0.2002,
+        "default_rate_in_approved": 0.0051
+      }
+    },
+    "base_rate_x1.0": {
+      "observed_default_rate": 0.0669,
+      "mean_predicted_pd": 0.0669,
+      "ECE": 0.0061,
+      "chow_budget": {
+        "cost_per_1000": 130.89,
+        "approve_rate": 0.8016,
+        "refer_rate": 0.1984,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2728,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0228
+      },
+      "creditsense": {
+        "cost_per_1000": 257.21,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      }
+    },
+    "base_rate_x2.0": {
+      "observed_default_rate": 0.1337,
+      "mean_predicted_pd": 0.0804,
+      "ECE": 0.0533,
+      "chow_budget": {
+        "cost_per_1000": 226.26,
+        "approve_rate": 0.7627,
+        "refer_rate": 0.2373,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.2675,
+        "goods_auto_declined": 0.0,
+        "default_rate_in_approved": 0.0469
+      },
+      "creditsense": {
+        "cost_per_1000": 272.48,
+        "approve_rate": 0.5285,
+        "refer_rate": 0.1976,
+        "decline_rate": 0.2739,
+        "defaulters_auto_approved": 0.0931,
+        "goods_auto_declined": 0.197,
+        "default_rate_in_approved": 0.0236
+      }
+    }
+  },
+  "F_age_bands_main_config": {
+    "<30": {
+      "n_test": 2219,
+      "calibration_defaulters": 149,
+      "cap_band": 0.0392,
+      "global_cap": {
+        "cost_per_1000": 418.21,
+        "approve_rate": 0.3177,
+        "refer_rate": 0.2118,
+        "decline_rate": 0.4705,
+        "defaulters_auto_approved": 0.0288,
+        "goods_auto_declined": 0.4091,
+        "default_rate_in_approved": 0.0113
+      },
+      "per_band_cap": {
+        "cost_per_1000": 267.69,
+        "approve_rate": 0.4033,
+        "refer_rate": 0.3583,
+        "decline_rate": 0.2384,
+        "defaulters_auto_approved": 0.0755,
+        "goods_auto_declined": 0.17,
+        "default_rate_in_approved": 0.0235
+      }
+    },
+    "30-39": {
+      "n_test": 5783,
+      "calibration_defaulters": 345,
+      "cap_band": 0.0424,
+      "global_cap": {
+        "cost_per_1000": 379.35,
+        "approve_rate": 0.3841,
+        "refer_rate": 0.2307,
+        "decline_rate": 0.3853,
+        "defaulters_auto_approved": 0.066,
+        "goods_auto_declined": 0.3336,
+        "default_rate_in_approved": 0.018
+      },
+      "per_band_cap": {
+        "cost_per_1000": 252.78,
+        "approve_rate": 0.4997,
+        "refer_rate": 0.2955,
+        "decline_rate": 0.2047,
+        "defaulters_auto_approved": 0.1139,
+        "goods_auto_declined": 0.1497,
+        "default_rate_in_approved": 0.0239
+      }
+    },
+    "40-49": {
+      "n_test": 8623,
+      "calibration_defaulters": 436,
+      "cap_band": 0.0405,
+      "global_cap": {
+        "cost_per_1000": 327.17,
+        "approve_rate": 0.45,
+        "refer_rate": 0.2402,
+        "decline_rate": 0.3099,
+        "defaulters_auto_approved": 0.0848,
+        "goods_auto_declined": 0.2657,
+        "default_rate_in_approved": 0.016
+      },
+      "per_band_cap": {
+        "cost_per_1000": 219.53,
+        "approve_rate": 0.5589,
+        "refer_rate": 0.2708,
+        "decline_rate": 0.1704,
+        "defaulters_auto_approved": 0.119,
+        "goods_auto_declined": 0.1256,
+        "default_rate_in_approved": 0.0181
+      }
+    },
+    "50-59": {
+      "n_test": 8762,
+      "calibration_defaulters": 345,
+      "cap_band": 0.0162,
+      "global_cap": {
+        "cost_per_1000": 246.95,
+        "approve_rate": 0.5662,
+        "refer_rate": 0.2253,
+        "decline_rate": 0.2085,
+        "defaulters_auto_approved": 0.1192,
+        "goods_auto_declined": 0.1762,
+        "default_rate_in_approved": 0.0129
+      },
+      "per_band_cap": {
+        "cost_per_1000": 308.67,
+        "approve_rate": 0.4962,
+        "refer_rate": 0.2143,
+        "decline_rate": 0.2894,
+        "defaulters_auto_approved": 0.0801,
+        "goods_auto_declined": 0.257,
+        "default_rate_in_approved": 0.0099
+      }
+    },
+    "60-69": {
+      "n_test": 7300,
+      "calibration_defaulters": 158,
+      "cap_band": 0.011,
+      "global_cap": {
+        "cost_per_1000": 147.86,
+        "approve_rate": 0.7267,
+        "refer_rate": 0.1681,
+        "decline_rate": 0.1052,
+        "defaulters_auto_approved": 0.1822,
+        "goods_auto_declined": 0.0863,
+        "default_rate_in_approved": 0.0085
+      },
+      "per_band_cap": {
+        "cost_per_1000": 323.32,
+        "approve_rate": 0.5458,
+        "refer_rate": 0.1474,
+        "decline_rate": 0.3068,
+        "defaulters_auto_approved": 0.0931,
+        "goods_auto_declined": 0.2878,
+        "default_rate_in_approved": 0.0058
+      }
+    },
+    "70+": {
+      "n_test": 4813,
+      "calibration_defaulters": 71,
+      "cap_band": 0.0086,
+      "global_cap": {
+        "cost_per_1000": 95.41,
+        "approve_rate": 0.8396,
+        "refer_rate": 0.102,
+        "decline_rate": 0.0584,
+        "defaulters_auto_approved": 0.25,
+        "goods_auto_declined": 0.048,
+        "default_rate_in_approved": 0.0067
+      },
+      "per_band_cap": {
+        "cost_per_1000": 296.78,
+        "approve_rate": 0.5504,
+        "refer_rate": 0.176,
+        "decline_rate": 0.2736,
+        "defaulters_auto_approved": 0.0648,
+        "goods_auto_declined": 0.2601,
+        "default_rate_in_approved": 0.0026
+      }
+    },
+    "_overall": {
+      "global_cap": {
+        "cost_per_1000": 257.21,
+        "approve_rate": 0.563,
+        "refer_rate": 0.2018,
+        "decline_rate": 0.2352,
+        "defaulters_auto_approved": 0.0981,
+        "goods_auto_declined": 0.1972,
+        "default_rate_in_approved": 0.0117
+      },
+      "per_band_cap": {
+        "cost_per_1000": 278.45,
+        "approve_rate": 0.5223,
+        "refer_rate": 0.2304,
+        "decline_rate": 0.2473,
+        "defaulters_auto_approved": 0.0997,
+        "goods_auto_declined": 0.2133,
+        "default_rate_in_approved": 0.0128
+      }
+    }
+  }
+}

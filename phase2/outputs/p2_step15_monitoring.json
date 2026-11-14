@@ -1,0 +1,141 @@
+{
+  "S0 no drift": {
+    "psi_score": {
+      "value": 0.001,
+      "status": "stable"
+    },
+    "worst_feature": {
+      "RevolvingUtilizationOfUnsecuredLines": {
+        "value": 0.002,
+        "status": "stable"
+      }
+    },
+    "n_features_act": 0,
+    "n_features_watch": 0,
+    "observed_default_rate": 0.0677,
+    "mean_predicted_pd": 0.0668,
+    "ECE": 0.0077,
+    "main_policy": {
+      "cost_per_1000": 253.0,
+      "approve_rate": 0.574,
+      "refer_rate": 0.1955,
+      "decline_rate": 0.2305,
+      "defaulters_auto_approved": 0.1064,
+      "goods_auto_declined": 0.1908,
+      "default_rate_in_approved": 0.0125
+    }
+  },
+  "S1 more high-utilisation applicants": {
+    "psi_score": {
+      "value": 0.4579,
+      "status": "act"
+    },
+    "worst_feature": {
+      "RevolvingUtilizationOfUnsecuredLines": {
+        "value": 1.0878,
+        "status": "act"
+      }
+    },
+    "n_features_act": 2,
+    "n_features_watch": 0,
+    "observed_default_rate": 0.1172,
+    "mean_predicted_pd": 0.1175,
+    "ECE": 0.0183,
+    "main_policy": {
+      "cost_per_1000": 415.28,
+      "approve_rate": 0.2822,
+      "refer_rate": 0.2824,
+      "decline_rate": 0.4354,
+      "defaulters_auto_approved": 0.0401,
+      "goods_auto_declined": 0.3798,
+      "default_rate_in_approved": 0.0167
+    }
+  },
+  "S3 younger applicant mix": {
+    "psi_score": {
+      "value": 0.0172,
+      "status": "stable"
+    },
+    "worst_feature": {
+      "age": {
+        "value": 0.1452,
+        "status": "watch"
+      }
+    },
+    "n_features_act": 0,
+    "n_features_watch": 1,
+    "observed_default_rate": 0.0762,
+    "mean_predicted_pd": 0.0757,
+    "ECE": 0.011,
+    "main_policy": {
+      "cost_per_1000": 284.6,
+      "approve_rate": 0.5227,
+      "refer_rate": 0.206,
+      "decline_rate": 0.2713,
+      "defaulters_auto_approved": 0.0853,
+      "goods_auto_declined": 0.2283,
+      "default_rate_in_approved": 0.0124
+    }
+  },
+  "S2 downturn: default rate doubled": {
+    "psi_score": {
+      "value": 0.011,
+      "status": "stable"
+    },
+    "worst_feature": {
+      "TotalPastDueEvents": {
+        "value": 0.0068,
+        "status": "stable"
+      }
+    },
+    "n_features_act": 0,
+    "n_features_watch": 0,
+    "observed_default_rate": 0.1337,
+    "mean_predicted_pd": 0.0789,
+    "ECE": 0.0548,
+    "main_policy": {
+      "cost_per_1000": 281.84,
+      "approve_rate": 0.5332,
+      "refer_rate": 0.1987,
+      "decline_rate": 0.2681,
+      "defaulters_auto_approved": 0.1114,
+      "goods_auto_declined": 0.1935,
+      "default_rate_in_approved": 0.0279
+    }
+  },
+  "learning_step_S2": {
+    "recent_labelled_outcomes_used": 3000,
+    "evaluated_on": 7000,
+    "observed_default_rate_holdout": 0.1301,
+    "champion": {
+      "mean_pd": 0.0776,
+      "ECE": 0.0525,
+      "Brier": 0.08789,
+      "main_policy": {
+        "cost_per_1000": 291.4,
+        "approve_rate": 0.5403,
+        "refer_rate": 0.1956,
+        "decline_rate": 0.2641,
+        "defaulters_auto_approved": 0.1306,
+        "goods_auto_declined": 0.1923,
+        "default_rate_in_approved": 0.0315
+      }
+    },
+    "challenger_recalibrated": {
+      "mean_pd": 0.135,
+      "ECE": 0.0192,
+      "Brier": 0.08287,
+      "main_policy": {
+        "cost_per_1000": 291.4,
+        "approve_rate": 0.5403,
+        "refer_rate": 0.1956,
+        "decline_rate": 0.2641,
+        "defaulters_auto_approved": 0.1306,
+        "goods_auto_declined": 0.1923,
+        "default_rate_in_approved": 0.0315
+      }
+    },
+    "promote": true,
+    "note": "Recalibration fixes probability levels, not ranking. The guarantee cap is rank-based, so it is unaffected by a pure change in default rate."
+  }
+}

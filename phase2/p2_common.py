@@ -1,12 +1,13 @@
 """Shared helpers for Phase 2 (novelty) scripts."""
 import os, json
 import numpy as np
-import joblib
+import joblib, sys
 from sklearn.base import BaseEstimator, ClassifierMixin, clone
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import roc_auc_score, average_precision_score, roc_curve, brier_score_loss
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT not in sys.path: sys.path.insert(0, ROOT)
 ART = os.path.join(ROOT, "artifacts")          # Phase 1 artifacts (models, data) - git-ignored
 OUT = os.path.join(ROOT, "phase2", "outputs")  # Phase 2 outputs
 os.makedirs(OUT, exist_ok=True)
@@ -19,30 +20,7 @@ def load_phase1():
     return d["X_train_sel"], d["X_test_sel"], d["y_train"], d["y_test"], d["scale_pos_weight"]
 
 
-class WeightedGB(ClassifierMixin, BaseEstimator):
-    """GradientBoosting that applies the cost weight (neg:pos ratio) to positives *internally*.
-
-    scikit-learn's StackingClassifier does not forward sample_weight selectively, and forwarding it to every
-    member would double-weight RF/XGBoost (which already use class_weight / scale_pos_weight). Wrapping GB
-    makes its cost-sensitive fit part of the estimator itself, so it also holds inside the stack and CV.
-    """
-    def __init__(self, n_estimators=200, max_depth=4, learning_rate=0.05, subsample=1.0,
-                 min_samples_leaf=1, random_state=SEED):
-        self.n_estimators = n_estimators; self.max_depth = max_depth; self.learning_rate = learning_rate
-        self.subsample = subsample; self.min_samples_leaf = min_samples_leaf; self.random_state = random_state
-
-    def fit(self, X, y):
-        y = np.asarray(y)
-        w = np.where(y == 1, (y == 0).sum() / max((y == 1).sum(), 1), 1.0)
-        self.model_ = GradientBoostingClassifier(
-            n_estimators=self.n_estimators, max_depth=self.max_depth, learning_rate=self.learning_rate,
-            subsample=self.subsample, min_samples_leaf=self.min_samples_leaf, random_state=self.random_state)
-        self.model_.fit(X, y, sample_weight=w)
-        self.classes_ = self.model_.classes_
-        return self
-
-    def predict_proba(self, X): return self.model_.predict_proba(X)
-    def predict(self, X): return self.model_.predict(X)
+from creditsense.models import WeightedGB  # noqa: E402  (kept importable for pickled bundles)
 
 
 def ks_stat(y, p):

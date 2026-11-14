@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export function Panel({ title, aside, children, className = "" }: { title?: string; aside?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <section className={`bg-surface border border-line ${className}`}>
+    <section className={`min-w-0 bg-surface border border-line ${className}`}>
       {title && (
         <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-2.5">
           <h2 className="font-semibold">{title}</h2>

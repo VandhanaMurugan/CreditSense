@@ -6,6 +6,7 @@ import { Caveat, ErrorNote, Loading, PageHeader, Panel } from "../components/ui"
 import { useModelCard } from "../lib/context";
 import { parseCsv } from "../lib/csv";
 import { pct, signed } from "../lib/format";
+import { describePolicy, isUnlimited, usePolicy } from "../lib/policy";
 import { repoText } from "../lib/repo";
 import { useAsync } from "../lib/useAsync";
 
@@ -116,7 +117,7 @@ function Result({ result }: { result: ScoreResponse }) {
           <dl className="num grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
             <dt className="text-muted">Cost ratio r (missed defaulter ÷ good declined)</dt><dd>{result.policy.r}</dd>
             <dt className="text-muted">Referral cost c</dt><dd>{result.policy.c}</dd>
-            <dt className="text-muted">Analyst budget ρ</dt><dd>{result.policy.rho === null ? "unlimited" : pct(result.policy.rho, 0)}</dd>
+            <dt className="text-muted">Analyst budget ρ</dt><dd>{isUnlimited(result.policy.rho) ? "unlimited" : pct(result.policy.rho!, 0)}</dd>
             <dt className="text-muted">Cap on defaulters auto-approved α</dt><dd>{result.policy.alpha ? pct(result.policy.alpha, 0) : "off"}</dd>
             <dt className="text-muted">Confidence level</dt><dd>{result.policy.delta ? pct(1 - result.policy.delta, 0) : "on average"}</dd>
           </dl>
@@ -140,13 +141,13 @@ function Result({ result }: { result: ScoreResponse }) {
 
 export default function DecisionScreen() {
   const card = useModelCard();
+  const { policy, isDefault } = usePolicy();
   const schema = useAsync(api.applicantSchema, []);
   const samples = useAsync(async () => {
     const raw = await repoText("demo/sample_applicants.csv");
     // Score the sample file once so each preset can show its PD and decision; nothing here is typed in by hand.
-    const scored = parseCsv(await api.scoreBatch(raw));
-    return scored;
-  }, []);
+    return parseCsv(await api.scoreBatch(raw, policy));
+  }, [policy]);
   const [draft, setDraft] = useState<Draft>(EMPTY);
   const [preset, setPreset] = useState("");
   const [result, setResult] = useState<ScoreResponse>();
@@ -157,7 +158,7 @@ export default function DecisionScreen() {
     setBusy(true); setError(undefined);
     try {
       const applicant = Object.fromEntries(INPUTS.map((k) => [k, Number(values[k])])) as Applicant;
-      setResult(await api.score(applicant));
+      setResult(await api.score(applicant, policy));
     } catch (e) { setResult(undefined); setError((e as Error).message); }
     finally { setBusy(false); }
   };
@@ -178,7 +179,13 @@ export default function DecisionScreen() {
     <>
       <PageHeader title="Applicant decision"
         lead="Enter seven bureau-style attributes. CreditSense returns a calibrated probability of default, a recommendation under the stated policy, and the reasons. A person confirms every decline." />
-      <div className="mb-4"><Caveat>{card.disclaimer}</Caveat></div>
+      <div className="mb-4 space-y-2">
+        <Caveat>{card.disclaimer}</Caveat>
+        <p className="num text-sm text-muted" data-testid="active-policy">
+          Policy in use ({isDefault ? "main policy" : "changed in the simulator"}): {describePolicy(policy)}.{" "}
+          <a href="#/policy" className="text-accent underline">Change it in the Policy simulator</a>
+        </p>
+      </div>
       <div className="grid gap-4 xl:grid-cols-[22rem_1fr]">
         <Panel title="Applicant">
           <form onSubmit={submit} className="space-y-3" aria-label="Applicant inputs">

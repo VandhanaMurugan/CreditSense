@@ -1,11 +1,25 @@
-import { useEffect, useState, type ComponentType } from "react";
+import { Component, useEffect, useState, type ComponentType, type ReactNode } from "react";
+import { ErrorNote } from "./components/ui";
 import { API_BASE } from "./api";
 import { ModelCardProvider, useModelCard } from "./lib/context";
+import { PolicyProvider } from "./lib/policy";
+import AboutScreen from "./screens/About";
+import BatchScreen from "./screens/Batch";
 import DecisionScreen from "./screens/Decision";
+import EvidenceScreen from "./screens/Evidence";
+import FairnessScreen from "./screens/Fairness";
+import HealthScreen from "./screens/Health";
+import PolicyScreen from "./screens/Policy";
 
 interface Screen { id: string; label: string; view: ComponentType }
 export const SCREENS: Screen[] = [
   { id: "decision", label: "Applicant decision", view: DecisionScreen },
+  { id: "policy", label: "Policy simulator", view: PolicyScreen },
+  { id: "batch", label: "Batch scoring", view: BatchScreen },
+  { id: "health", label: "Model health", view: HealthScreen },
+  { id: "fairness", label: "Fairness and reliability", view: FairnessScreen },
+  { id: "evidence", label: "Research evidence", view: EvidenceScreen },
+  { id: "about", label: "About and limitations", view: AboutScreen },
 ];
 
 function useHashRoute(): string {
@@ -17,6 +31,15 @@ function useHashRoute(): string {
     return () => window.removeEventListener("hashchange", on);
   }, []);
   return route;
+}
+
+/** A screen that cannot read its evidence says so; it never shows a guessed number. */
+class ScreenBoundary extends Component<{ children: ReactNode }, { error?: string }> {
+  state: { error?: string } = {};
+  static getDerivedStateFromError(e: Error) { return { error: e.message }; }
+  render() {
+    return this.state.error ? <ErrorNote message="This screen could not be drawn from the repository outputs." hint={this.state.error} /> : this.props.children;
+  }
 }
 
 function Shell() {
@@ -46,11 +69,11 @@ function Shell() {
         </nav>
         <p className="num hidden px-4 pt-6 text-sm opacity-70 lg:block">Model v{card.version}, built {card.built}<br />API {API_BASE}</p>
       </aside>
-      <main id="main" className="mx-auto w-full max-w-[84rem] p-4 md:p-6"><View /></main>
+      <main id="main" className="mx-auto w-full max-w-[84rem] p-4 md:p-6"><ScreenBoundary key={screen.id}><View /></ScreenBoundary></main>
     </div>
   );
 }
 
 export default function App() {
-  return <ModelCardProvider><Shell /></ModelCardProvider>;
+  return <ModelCardProvider><PolicyProvider><Shell /></PolicyProvider></ModelCardProvider>;
 }

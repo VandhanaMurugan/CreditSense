@@ -1,0 +1,11 @@
+.git
+ui
+notebooks
+docs
+results
+phase2
+pipeline
+tests
+artifacts
+**/__pycache__
+**/node_modules

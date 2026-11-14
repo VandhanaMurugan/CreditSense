@@ -17,6 +17,10 @@ _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _CANDIDATES = [os.path.join(_ROOT, "artifacts", "creditsense_bundle.joblib"),       # freshly built with `make bundle`
                os.path.join(_ROOT, "models", "creditsense_bundle_v2.0.0.joblib")]    # committed release bundle
 DEFAULT_BUNDLE = next((p for p in _CANDIDATES if os.path.exists(p)), _CANDIDATES[-1])
+# The bundle stores XGBoost as a pickled memory snapshot, which is tied to the platform it was written on (the v2.0.0
+# bundle was built on Linux and its snapshot does not open on Windows). For each released bundle, identified by the SHA-256
+# of its file, models/ holds the same XGBoost model exported in XGBoost's portable format; it is used only if the snapshot fails.
+PORTABLE_XGB = {"c7ec80198aca7727f5c91e7e5e19f98f28f2c8458bd8a8a22a205760988c9716": os.path.join(_ROOT, "models", "creditsense_xgb_v2.0.0.ubj")}
 GMSC_CSV = os.path.join(_ROOT, "data", "GiveMeSomeCredit_dataset.csv")
 AGE_BANDS = [(0, 30, "<30"), (30, 40, "30-39"), (40, 50, "40-49"), (50, 60, "50-59"), (60, 70, "60-69"), (70, 200, "70+")]   # as in phase2/p2_step12
 DISCLAIMER = ("Decision support only. Probabilities are estimated from 2000s-era US bureau-style data (Give Me Some Credit) and "
@@ -27,9 +31,46 @@ def _logit(p):
     p = np.clip(p, 1e-6, 1 - 1e-6); return np.log(p / (1 - p))
 
 
+def _sha256(path):
+    import hashlib
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""): h.update(chunk)
+    return h.hexdigest()
+
+
+def load_bundle(path: str) -> dict:
+    """Load a model bundle. If XGBoost cannot read its pickled snapshot on this platform, read the same XGBoost model from
+    the portable export registered for exactly this bundle file. The bundle file itself is never changed, and a bundle with
+    no registered export fails with an explanation instead of loading some other model."""
+    from xgboost.core import Booster, XGBoostError
+    try:
+        return joblib.load(path)
+    except XGBoostError as err:
+        portable = PORTABLE_XGB.get(_sha256(path))
+        if portable is None or not os.path.exists(portable):
+            raise RuntimeError(f"XGBoost could not read the model snapshot inside {path} on this platform ({str(err).strip()[:80]}), "
+                               "and no portable export is registered for this bundle. Rebuild it here with `make bundle`.") from err
+        native = Booster.__setstate__
+
+        def from_portable(self, state):
+            state = dict(state); state.pop("handle", None)
+            self.__dict__.update(state)
+            fresh = Booster(model_file=portable)
+            self.handle, fresh.handle = fresh.handle, None
+
+        Booster.__setstate__ = from_portable
+        try:
+            bundle = joblib.load(path)
+        finally:
+            Booster.__setstate__ = native
+        bundle["xgboost_loaded_from"] = os.path.basename(portable)
+        return bundle
+
+
 class CreditSense:
     def __init__(self, bundle_path: str | None = None):
-        self.b = joblib.load(bundle_path or os.environ.get("CREDITSENSE_BUNDLE", DEFAULT_BUNDLE))
+        self.b = load_bundle(bundle_path or os.environ.get("CREDITSENSE_BUNDLE", DEFAULT_BUNDLE))
         self.A, self.B = self.b["platt"]
         self._explainer = None
         self._test_age = False          # False = not looked up yet; None = unavailable

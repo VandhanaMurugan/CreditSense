@@ -17,6 +17,8 @@ _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _CANDIDATES = [os.path.join(_ROOT, "artifacts", "creditsense_bundle.joblib"),       # freshly built with `make bundle`
                os.path.join(_ROOT, "models", "creditsense_bundle_v2.0.0.joblib")]    # committed release bundle
 DEFAULT_BUNDLE = next((p for p in _CANDIDATES if os.path.exists(p)), _CANDIDATES[-1])
+GMSC_CSV = os.path.join(_ROOT, "data", "GiveMeSomeCredit_dataset.csv")
+AGE_BANDS = [(0, 30, "<30"), (30, 40, "30-39"), (40, 50, "40-49"), (50, 60, "50-59"), (60, 70, "60-69"), (70, 200, "70+")]   # as in phase2/p2_step12
 DISCLAIMER = ("Decision support only. Probabilities are estimated from 2000s-era US bureau-style data (Give Me Some Credit) and "
               "are valid only for applicants who resemble that population. Cost ratios are policy assumptions.")
 
@@ -30,6 +32,7 @@ class CreditSense:
         self.b = joblib.load(bundle_path or os.environ.get("CREDITSENSE_BUNDLE", DEFAULT_BUNDLE))
         self.A, self.B = self.b["platt"]
         self._explainer = None
+        self._test_age = False          # False = not looked up yet; None = unavailable
 
     # ---------- core
     @property
@@ -126,7 +129,39 @@ class CreditSense:
                  "Same budget, no guarantee": decide_triage(pt, r, c, np.inf, referral_gain_cut(self.b["p_cal"], r, c, np.inf, pol["rho"])),
                  "Two-way cost threshold": np.where(pt >= 1 / (1 + r), DECLINE, APPROVE)}
         return {"policy": {k: pol[k] for k in ("r", "c", "rho", "alpha", "delta")}, "pd_ranges": pol["pd_ranges"],
-                "n_test": int(len(yt)), "results": {k: evaluate(v, yt, r, c) for k, v in rules.items()}}
+                "n_test": int(len(yt)), "results": {k: evaluate(v, yt, r, c) for k, v in rules.items()},
+                "group_rates": self._group_rates(rules["CreditSense"], yt, r, c)}
+
+    def test_age(self):
+        """Ages of the held-out test applicants, in the order of the bundle's p_test / y_test.
+        The bundle stores scores and outcomes only, so the ages are re-derived from the dataset with the same split as
+        phase2/p2_step13 (drop age = 0, stratified 75/25, random_state 42). Returns None if the dataset is not present
+        or does not line up with the bundle (checked on the outcomes)."""
+        if self._test_age is False:
+            self._test_age = None
+            path = os.environ.get("CREDITSENSE_DATA", GMSC_CSV)
+            if os.path.exists(path):
+                from sklearn.model_selection import train_test_split
+                raw = pd.read_csv(path, index_col=0); raw = raw[raw["age"] > 0]
+                _, test = train_test_split(raw, test_size=0.25, random_state=42, stratify=raw["SeriousDlqin2yrs"])
+                if len(test) == len(self.b["y_test"]) and np.array_equal(test["SeriousDlqin2yrs"].values, np.asarray(self.b["y_test"])):
+                    self._test_age = test["age"].values
+        return self._test_age
+
+    def _group_rates(self, decision, y, r, c) -> dict:
+        """Decision rates of the CreditSense rule by age band on the test set, so a policy owner sees who a policy
+        approves, refers and declines before choosing it. An outcome audit, not a fairness certificate."""
+        age = self.test_age()
+        note = ("Age bands on the held-out test set under the CreditSense rule. The cap on defaulters auto-approved is "
+                "set for the whole population; it is not guaranteed within each band.")
+        if age is None:
+            return {"attribute": "age", "available": False, "groups": {},
+                    "note": "Group rates need data/GiveMeSomeCredit_dataset.csv next to the bundle; it was not found or does not match."}
+        y = np.asarray(y); groups = {}
+        for lo, hi, lab in AGE_BANDS:
+            m = (age >= lo) & (age < hi)
+            groups[lab] = {"n": int(m.sum()), "observed_default_rate": round(float(y[m].mean()), 4), **evaluate(decision[m], y[m], r, c)}
+        return {"attribute": "age", "available": True, "groups": groups, "note": note}
 
     def monitoring(self, df: pd.DataFrame, y: np.ndarray | None = None) -> dict:
         """PSI of the score and each feature against the calibration reference; calibration-in-the-large if labels given."""

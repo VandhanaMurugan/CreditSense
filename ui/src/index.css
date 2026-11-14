@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-serif/500.css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-serif: "IBM Plex Serif", Georgia, serif;
+  --color-ink: #14213d;
+  --color-muted: #55617a;
+  --color-paper: #f3f5f8;
+  --color-surface: #ffffff;
+  --color-line: #d5dbe6;
+  --color-accent: #1f4e8c;
+  /* decision states: fill / tint / readable text. Always paired with a word and an icon. */
+  --color-approve: #0ca30c;
+  --color-approve-tint: #e6f5e6;
+  --color-approve-ink: #0a5c0a;
+  --color-refer: #fab219;
+  --color-refer-tint: #fff3d1;
+  --color-refer-ink: #6f4a00;
+  --color-decline: #d03b3b;
+  --color-decline-tint: #fbe8e8;
+  --color-decline-ink: #8c1d1d;
+}
+
+html { background: var(--color-paper); color: var(--color-ink); }
+body { font-family: var(--font-sans); font-size: 15px; line-height: 1.5; }
+.num { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

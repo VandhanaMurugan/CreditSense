@@ -34,5 +34,5 @@ def test_image_contains_what_the_service_loads():
 def test_requirements_pin_the_model_libraries():
     """The bundle is a pickle: it only loads under the library versions it was built with."""
     req = open(os.path.join(ROOT, "requirements.txt")).read()
-    for lib in ("scikit-learn", "xgboost", "shap", "fastapi", "uvicorn", "python-multipart"):
+    for lib in ("scikit-learn", "xgboost", "shap", "fastapi", "uvicorn", "python-multipart", "pandas", "numpy", "scipy", "joblib"):
         assert re.search(rf"^{lib}==\d", req, re.M), lib

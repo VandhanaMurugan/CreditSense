@@ -1,13 +1,15 @@
-# Versions the pipeline was last verified against (Python 3.13)
-pandas
-numpy
+# Versions the pipeline was last verified against (Python 3.13).
+# The model bundle is a pickle: pandas, numpy, scipy and joblib must match the versions it was saved with, not only
+# scikit-learn and xgboost. Install into a virtual environment so other projects keep their own versions.
+pandas==3.0.5
+numpy==2.5.3
 scikit-learn==1.9.1
 xgboost==3.4.1
 lightgbm==4.7.0
 shap==0.53.0
 matplotlib
-scipy
-joblib
+scipy==1.18.1
+joblib==1.6.0
 imbalanced-learn==0.14.2
 xlrd==2.0.2
 fastapi==0.162.7

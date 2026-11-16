@@ -149,7 +149,15 @@ class CreditSense:
         if dec == APPROVE:
             return f"Approve: PD {p:.1%} is below both the cost-based approval limit and the guarantee cap ({pol['cap']:.2%})."
         if dec == DECLINE:
-            return f"Decline (analyst confirms): expected cost of approving (r x PD = {pol['r'] * p:.2f}) exceeds that of declining ({1 - p:.2f}), and the case is outside the referral band."
+            approve_cost, decline_cost = pol["r"] * p, 1 - p
+            if approve_cost > decline_cost:
+                return (f"Decline (analyst confirms): expected cost of approving (r x PD = {approve_cost:.2f}) exceeds that of declining "
+                        f"({decline_cost:.2f}), and the case is outside the referral band.")
+            # Cheaper to approve on cost alone, but the guarantee forbids auto-approval above the cap and the analyst budget is spent
+            # on cases with more to gain from a review. Say so: this decline is the price of the guarantee, not a cost judgement.
+            return (f"Decline (analyst confirms): PD {p:.1%} is above the guarantee cap ({pol['cap']:.2%}), so it cannot be approved automatically, "
+                    f"and the analyst budget is already used by cases with more to gain from a review. On cost alone, approving "
+                    f"(r x PD = {approve_cost:.2f}) would be cheaper than declining ({decline_cost:.2f}): this decline is the price of the guarantee.")
         return "Refer to an analyst: the expected cost of any automatic decision exceeds the referral cost, or the guarantee cap blocks auto-approval."
 
     def score_batch(self, df: pd.DataFrame, policy: dict | None = None) -> pd.DataFrame:

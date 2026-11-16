@@ -22,6 +22,11 @@ Phase 1 (`../pipeline`) reproduced the stacked ensemble. Phase 2 tests four hypo
 | N10 | `p2_step14_reason_codes.py` | Exact reason codes for the calibrated stack (`creditsense/explain.py`): additivity, stability, shortcut fidelity |
 | N11 | `p2_step15_monitoring.py` | Drift scenarios, PSI vs outcome monitoring, recalibration with a pre-stated promotion rule |
 | N13 (part) | `p2_step16_scorecard_baseline.py` | Industry baseline: weight-of-evidence logistic scorecard, with and without the CreditSense triage |
+| N14 | `p2_step17_lendingclub_oot.py` | **Out-of-time test on real, dated lending data** (Lending Club, 611,816 loans issued 2010-2015): train 2010-12, calibrate 2013, test 2014-15; decisions valued in dollars actually repaid; five pass marks written before the run |
+| N15 | `p2_step18_elliptic_transaction_risk.py` | The same decision code on crypto transaction screening (Elliptic data set, 49 time steps): allow / review / block; guarantee before and after a known change in illicit activity |
+| N16 | `p2_step19_no_age_model.py` | Roadmap P1.1: the released model with `age` removed, under a promotion rule written before the run; the bundle is not replaced |
+
+Steps 17-18 need data that is not committed: see `../data/lendingclub/README.md` and `../data/elliptic/README.md`. Run all three with `make real-data`.
 
 Remaining for Review 3: user-interface demo on the API (N12) and the final comparison write-up (N13).
 

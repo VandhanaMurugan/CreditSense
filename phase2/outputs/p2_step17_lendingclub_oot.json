@@ -1,0 +1,859 @@
+{
+  "data": {
+    "source": "Lending Club accepted loans 2007-2018Q4 (public)",
+    "rows_in_file": 2260701,
+    "rows_36m_2010_2015": 612892,
+    "rows_used": 611816,
+    "train_2010_2012": 66037,
+    "calibrate_2013": 100422,
+    "test_2014": 162570,
+    "test_2015": 282787,
+    "default_rate_by_year": {
+      "2010": 0.0995,
+      "2011": 0.1063,
+      "2012": 0.1358,
+      "2013": 0.1233,
+      "2014": 0.1373,
+      "2015": 0.1488
+    },
+    "n_features": 37,
+    "target": "Charged Off or Default (vs Fully Paid)"
+  },
+  "pass_marks": {
+    "P1_auc_vs_grade_min": -0.01,
+    "P2_ece_max": 0.02,
+    "P3_miss_max_at_alpha10": 0.12,
+    "P4_profit_vs_approve_all_min": 0.0,
+    "P5_stack_gain_max": 0.005
+  },
+  "assumptions": {
+    "review_cost_dollars": 25.0,
+    "analyst_budget": 0.2,
+    "analyst_accuracy_main": 1.0
+  },
+  "metrics": {
+    "LR": {
+      "test_2014_2015": {
+        "AUC": 0.6434,
+        "KS": 0.2076,
+        "Brier": 0.1203,
+        "ECE": 0.0183,
+        "mean_predicted": 0.1263,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6425,
+        "KS": 0.2091,
+        "Brier": 0.1151,
+        "ECE": 0.0108,
+        "mean_predicted": 0.1295,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.645,
+        "KS": 0.2096,
+        "Brier": 0.1233,
+        "ECE": 0.0243,
+        "mean_predicted": 0.1245,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.6478,
+        "KS": 0.2141,
+        "Brier": 0.1049,
+        "ECE": 0.0031,
+        "mean_predicted": 0.1233,
+        "observed": 0.1233
+      }
+    },
+    "RF": {
+      "test_2014_2015": {
+        "AUC": 0.6374,
+        "KS": 0.1977,
+        "Brier": 0.1208,
+        "ECE": 0.0247,
+        "mean_predicted": 0.12,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.639,
+        "KS": 0.2004,
+        "Brier": 0.1153,
+        "ECE": 0.0146,
+        "mean_predicted": 0.1227,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6375,
+        "KS": 0.198,
+        "Brier": 0.124,
+        "ECE": 0.0304,
+        "mean_predicted": 0.1184,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.6441,
+        "KS": 0.2076,
+        "Brier": 0.105,
+        "ECE": 0.0015,
+        "mean_predicted": 0.1232,
+        "observed": 0.1233
+      }
+    },
+    "GB": {
+      "test_2014_2015": {
+        "AUC": 0.6442,
+        "KS": 0.2086,
+        "Brier": 0.1202,
+        "ECE": 0.019,
+        "mean_predicted": 0.1256,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6431,
+        "KS": 0.2065,
+        "Brier": 0.115,
+        "ECE": 0.0095,
+        "mean_predicted": 0.128,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6456,
+        "KS": 0.2109,
+        "Brier": 0.1232,
+        "ECE": 0.0247,
+        "mean_predicted": 0.1242,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.6486,
+        "KS": 0.2164,
+        "Brier": 0.1048,
+        "ECE": 0.0024,
+        "mean_predicted": 0.1233,
+        "observed": 0.1233
+      }
+    },
+    "XGB": {
+      "test_2014_2015": {
+        "AUC": 0.6403,
+        "KS": 0.2042,
+        "Brier": 0.1204,
+        "ECE": 0.0191,
+        "mean_predicted": 0.1255,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6389,
+        "KS": 0.202,
+        "Brier": 0.1152,
+        "ECE": 0.0095,
+        "mean_predicted": 0.1278,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6419,
+        "KS": 0.2069,
+        "Brier": 0.1234,
+        "ECE": 0.0246,
+        "mean_predicted": 0.1242,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.6451,
+        "KS": 0.2134,
+        "Brier": 0.1051,
+        "ECE": 0.0031,
+        "mean_predicted": 0.1233,
+        "observed": 0.1233
+      }
+    },
+    "LightGBM": {
+      "test_2014_2015": {
+        "AUC": 0.6403,
+        "KS": 0.2037,
+        "Brier": 0.1204,
+        "ECE": 0.0186,
+        "mean_predicted": 0.126,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6393,
+        "KS": 0.2024,
+        "Brier": 0.1152,
+        "ECE": 0.0095,
+        "mean_predicted": 0.1281,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6416,
+        "KS": 0.206,
+        "Brier": 0.1234,
+        "ECE": 0.024,
+        "mean_predicted": 0.1248,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.6457,
+        "KS": 0.2168,
+        "Brier": 0.105,
+        "ECE": 0.0048,
+        "mean_predicted": 0.1233,
+        "observed": 0.1233
+      }
+    },
+    "Stack": {
+      "test_2014_2015": {
+        "AUC": 0.6453,
+        "KS": 0.209,
+        "Brier": 0.1202,
+        "ECE": 0.0205,
+        "mean_predicted": 0.1241,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6446,
+        "KS": 0.2095,
+        "Brier": 0.1149,
+        "ECE": 0.0106,
+        "mean_predicted": 0.1267,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6465,
+        "KS": 0.2108,
+        "Brier": 0.1232,
+        "ECE": 0.0263,
+        "mean_predicted": 0.1226,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.65,
+        "KS": 0.2181,
+        "Brier": 0.1048,
+        "ECE": 0.0025,
+        "mean_predicted": 0.1233,
+        "observed": 0.1233
+      }
+    },
+    "Lender sub-grade": {
+      "test_2014_2015": {
+        "AUC": 0.6712,
+        "KS": 0.2522,
+        "Brier": 0.119,
+        "ECE": 0.024,
+        "mean_predicted": 0.1206,
+        "observed": 0.1446
+      },
+      "test_2014": {
+        "AUC": 0.6596,
+        "KS": 0.2365,
+        "Brier": 0.1144,
+        "ECE": 0.0126,
+        "mean_predicted": 0.125,
+        "observed": 0.1373
+      },
+      "test_2015": {
+        "AUC": 0.6786,
+        "KS": 0.2619,
+        "Brier": 0.1217,
+        "ECE": 0.0307,
+        "mean_predicted": 0.1181,
+        "observed": 0.1488
+      },
+      "calibration_year_2013": {
+        "AUC": 0.649,
+        "KS": 0.219,
+        "Brier": 0.105,
+        "ECE": 0.0075,
+        "mean_predicted": 0.1232,
+        "observed": 0.1233
+      }
+    }
+  },
+  "stacking_H1": {
+    "best_single": "GB",
+    "stack_minus_best_single_auc": {
+      "mean": 0.0011,
+      "ci95": [
+        0.0005,
+        0.0017
+      ]
+    },
+    "stack_minus_lender_grade_auc": {
+      "mean": -0.0234,
+      "ci95": [
+        -0.0274,
+        -0.0191
+      ]
+    },
+    "bootstrap": "500 paired resamples of 120,000 test loans"
+  },
+  "guarantee": {
+    "0.05": {
+      "cap_pd": 0.0613,
+      "in_time_2013_mean_over_200_splits": 0.0501,
+      "in_time_95th_percentile": 0.0562,
+      "out_of_time_2014": 0.0536,
+      "out_of_time_2015": 0.0605,
+      "out_of_time_2014_2015": 0.0581,
+      "by_quarter": {
+        "2014Q1": 0.0575,
+        "2014Q2": 0.0565,
+        "2014Q3": 0.0553,
+        "2014Q4": 0.048,
+        "2015Q1": 0.0516,
+        "2015Q2": 0.0558,
+        "2015Q3": 0.0637,
+        "2015Q4": 0.0673
+      }
+    },
+    "0.1": {
+      "cap_pd": 0.0749,
+      "in_time_2013_mean_over_200_splits": 0.1004,
+      "in_time_95th_percentile": 0.1093,
+      "out_of_time_2014": 0.1016,
+      "out_of_time_2015": 0.114,
+      "out_of_time_2014_2015": 0.1097,
+      "by_quarter": {
+        "2014Q1": 0.1056,
+        "2014Q2": 0.1045,
+        "2014Q3": 0.1036,
+        "2014Q4": 0.0958,
+        "2015Q1": 0.0978,
+        "2015Q2": 0.1086,
+        "2015Q3": 0.1172,
+        "2015Q4": 0.1258
+      }
+    },
+    "0.2": {
+      "cap_pd": 0.0961,
+      "in_time_2013_mean_over_200_splits": 0.2,
+      "in_time_95th_percentile": 0.2116,
+      "out_of_time_2014": 0.1965,
+      "out_of_time_2015": 0.2188,
+      "out_of_time_2014_2015": 0.2111,
+      "by_quarter": {
+        "2014Q1": 0.2005,
+        "2014Q2": 0.2068,
+        "2014Q3": 0.1952,
+        "2014Q4": 0.1877,
+        "2015Q1": 0.1941,
+        "2015Q2": 0.2115,
+        "2015Q3": 0.225,
+        "2015Q4": 0.2352
+      }
+    }
+  },
+  "money_parameters_from_train_years": {
+    "profit_per_dollar_good_loan": 0.1624,
+    "loss_per_dollar_defaulted_loan": 0.3977,
+    "measured_cost_ratio_r": 2.45,
+    "share_of_contract_interest_earned_on_good_loans": 0.842,
+    "mean_profit_good_loan_dollars": 1842.0
+  },
+  "money": {
+    "Stack": {
+      "Approve all (what the lender did)": {
+        "profit_per_1000_loans": 945590.0,
+        "approve_rate": 1.0,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 1.0,
+        "goods_auto_declined": 0.0
+      },
+      "Two-way cost threshold (measured r)": {
+        "profit_per_1000_loans": 943447.0,
+        "approve_rate": 0.9957,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0043,
+        "defaulters_auto_approved": 0.9903,
+        "goods_auto_declined": 0.0034
+      },
+      "Two-way, price-aware (r per loan)": {
+        "profit_per_1000_loans": 942216.0,
+        "approve_rate": 0.9955,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0045,
+        "defaulters_auto_approved": 0.9959,
+        "goods_auto_declined": 0.0046
+      },
+      "Same budget, no guarantee": {
+        "profit_per_1000_loans": 1153590.0,
+        "approve_rate": 0.7875,
+        "refer_rate": 0.2125,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 0.6544,
+        "goods_auto_declined": 0.0
+      },
+      "CreditSense alpha 10%": {
+        "profit_per_1000_loans": 590503.0,
+        "approve_rate": 0.241,
+        "refer_rate": 0.1906,
+        "decline_rate": 0.5684,
+        "defaulters_auto_approved": 0.1097,
+        "goods_auto_declined": 0.539
+      },
+      "CreditSense alpha 20%": {
+        "profit_per_1000_loans": 736474.0,
+        "approve_rate": 0.3786,
+        "refer_rate": 0.189,
+        "decline_rate": 0.4324,
+        "defaulters_auto_approved": 0.2111,
+        "goods_auto_declined": 0.4024
+      },
+      "vs_approve_all_dollars_per_1000": {
+        "Two-way cost threshold (measured r)": {
+          "mean": -2142.0,
+          "ci95": [
+            -2983.0,
+            -1369.0
+          ]
+        },
+        "Two-way, price-aware (r per loan)": {
+          "mean": -3374.0,
+          "ci95": [
+            -3912.0,
+            -2844.0
+          ]
+        },
+        "Same budget, no guarantee": {
+          "mean": 208000.0,
+          "ci95": [
+            204181.0,
+            212172.0
+          ]
+        },
+        "CreditSense alpha 10%": {
+          "mean": -355087.0,
+          "ci95": [
+            -364171.0,
+            -346084.0
+          ]
+        },
+        "CreditSense alpha 20%": {
+          "mean": -209116.0,
+          "ci95": [
+            -218308.0,
+            -201169.0
+          ]
+        }
+      },
+      "by_year": {
+        "2014": {
+          "Approve all (what the lender did)": {
+            "profit_per_1000_loans": 1132168.0,
+            "approve_rate": 1.0,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 1.0,
+            "goods_auto_declined": 0.0
+          },
+          "Two-way cost threshold (measured r)": {
+            "profit_per_1000_loans": 1128827.0,
+            "approve_rate": 0.9956,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0044,
+            "defaulters_auto_approved": 0.9897,
+            "goods_auto_declined": 0.0035
+          },
+          "Two-way, price-aware (r per loan)": {
+            "profit_per_1000_loans": 1129761.0,
+            "approve_rate": 0.9974,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0026,
+            "defaulters_auto_approved": 0.9978,
+            "goods_auto_declined": 0.0027
+          },
+          "Same budget, no guarantee": {
+            "profit_per_1000_loans": 1321303.0,
+            "approve_rate": 0.7747,
+            "refer_rate": 0.2253,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 0.6371,
+            "goods_auto_declined": 0.0
+          },
+          "CreditSense alpha 10%": {
+            "profit_per_1000_loans": 626198.0,
+            "approve_rate": 0.2273,
+            "refer_rate": 0.186,
+            "decline_rate": 0.5867,
+            "defaulters_auto_approved": 0.1016,
+            "goods_auto_declined": 0.5593
+          },
+          "CreditSense alpha 20%": {
+            "profit_per_1000_loans": 802724.0,
+            "approve_rate": 0.3613,
+            "refer_rate": 0.1875,
+            "decline_rate": 0.4512,
+            "defaulters_auto_approved": 0.1965,
+            "goods_auto_declined": 0.4228
+          }
+        },
+        "2015": {
+          "Approve all (what the lender did)": {
+            "profit_per_1000_loans": 838329.0,
+            "approve_rate": 1.0,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 1.0,
+            "goods_auto_declined": 0.0
+          },
+          "Two-way cost threshold (measured r)": {
+            "profit_per_1000_loans": 836876.0,
+            "approve_rate": 0.9958,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0042,
+            "defaulters_auto_approved": 0.9906,
+            "goods_auto_declined": 0.0033
+          },
+          "Two-way, price-aware (r per loan)": {
+            "profit_per_1000_loans": 834398.0,
+            "approve_rate": 0.9944,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0056,
+            "defaulters_auto_approved": 0.9948,
+            "goods_auto_declined": 0.0057
+          },
+          "Same budget, no guarantee": {
+            "profit_per_1000_loans": 1057174.0,
+            "approve_rate": 0.7949,
+            "refer_rate": 0.2051,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 0.6636,
+            "goods_auto_declined": 0.0
+          },
+          "CreditSense alpha 10%": {
+            "profit_per_1000_loans": 569983.0,
+            "approve_rate": 0.2489,
+            "refer_rate": 0.1933,
+            "decline_rate": 0.5578,
+            "defaulters_auto_approved": 0.114,
+            "goods_auto_declined": 0.5271
+          },
+          "CreditSense alpha 20%": {
+            "profit_per_1000_loans": 698387.0,
+            "approve_rate": 0.3886,
+            "refer_rate": 0.1898,
+            "decline_rate": 0.4216,
+            "defaulters_auto_approved": 0.2188,
+            "goods_auto_declined": 0.3906
+          }
+        }
+      }
+    },
+    "Lender sub-grade": {
+      "Approve all (what the lender did)": {
+        "profit_per_1000_loans": 945590.0,
+        "approve_rate": 1.0,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0,
+        "defaulters_auto_approved": 1.0,
+        "goods_auto_declined": 0.0
+      },
+      "Two-way cost threshold (measured r)": {
+        "profit_per_1000_loans": 940616.0,
+        "approve_rate": 0.9875,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0125,
+        "defaulters_auto_approved": 0.9703,
+        "goods_auto_declined": 0.0095
+      },
+      "Two-way, price-aware (r per loan)": {
+        "profit_per_1000_loans": 945223.0,
+        "approve_rate": 0.9994,
+        "refer_rate": 0.0,
+        "decline_rate": 0.0006,
+        "defaulters_auto_approved": 0.9984,
+        "goods_auto_declined": 0.0005
+      },
+      "Same budget, no guarantee": {
+        "profit_per_1000_loans": 1146931.0,
+        "approve_rate": 0.8351,
+        "refer_rate": 0.1648,
+        "decline_rate": 0.0001,
+        "defaulters_auto_approved": 0.6979,
+        "goods_auto_declined": 0.0001
+      },
+      "CreditSense alpha 10%": {
+        "profit_per_1000_loans": 419927.0,
+        "approve_rate": 0.2367,
+        "refer_rate": 0.1253,
+        "decline_rate": 0.638,
+        "defaulters_auto_approved": 0.0886,
+        "goods_auto_declined": 0.6056
+      },
+      "CreditSense alpha 20%": {
+        "profit_per_1000_loans": 580114.0,
+        "approve_rate": 0.362,
+        "refer_rate": 0.1324,
+        "decline_rate": 0.5056,
+        "defaulters_auto_approved": 0.1703,
+        "goods_auto_declined": 0.4692
+      },
+      "vs_approve_all_dollars_per_1000": {
+        "Two-way cost threshold (measured r)": {
+          "mean": -4974.0,
+          "ci95": [
+            -6627.0,
+            -3244.0
+          ]
+        },
+        "Two-way, price-aware (r per loan)": {
+          "mean": -367.0,
+          "ci95": [
+            -798.0,
+            109.0
+          ]
+        },
+        "Same budget, no guarantee": {
+          "mean": 201342.0,
+          "ci95": [
+            197349.0,
+            205418.0
+          ]
+        },
+        "CreditSense alpha 10%": {
+          "mean": -525663.0,
+          "ci95": [
+            -534992.0,
+            -516075.0
+          ]
+        },
+        "CreditSense alpha 20%": {
+          "mean": -365476.0,
+          "ci95": [
+            -373954.0,
+            -357238.0
+          ]
+        }
+      },
+      "by_year": {
+        "2014": {
+          "Approve all (what the lender did)": {
+            "profit_per_1000_loans": 1132168.0,
+            "approve_rate": 1.0,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 1.0,
+            "goods_auto_declined": 0.0
+          },
+          "Two-way cost threshold (measured r)": {
+            "profit_per_1000_loans": 1116405.0,
+            "approve_rate": 0.9807,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0193,
+            "defaulters_auto_approved": 0.9581,
+            "goods_auto_declined": 0.0157
+          },
+          "Two-way, price-aware (r per loan)": {
+            "profit_per_1000_loans": 1131124.0,
+            "approve_rate": 0.9994,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0006,
+            "defaulters_auto_approved": 0.9985,
+            "goods_auto_declined": 0.0005
+          },
+          "Same budget, no guarantee": {
+            "profit_per_1000_loans": 1309438.0,
+            "approve_rate": 0.8171,
+            "refer_rate": 0.1828,
+            "decline_rate": 0.0001,
+            "defaulters_auto_approved": 0.6815,
+            "goods_auto_declined": 0.0001
+          },
+          "CreditSense alpha 10%": {
+            "profit_per_1000_loans": 426500.0,
+            "approve_rate": 0.2173,
+            "refer_rate": 0.1217,
+            "decline_rate": 0.661,
+            "defaulters_auto_approved": 0.0852,
+            "goods_auto_declined": 0.633
+          },
+          "CreditSense alpha 20%": {
+            "profit_per_1000_loans": 618983.0,
+            "approve_rate": 0.339,
+            "refer_rate": 0.138,
+            "decline_rate": 0.523,
+            "defaulters_auto_approved": 0.1635,
+            "goods_auto_declined": 0.4909
+          }
+        },
+        "2015": {
+          "Approve all (what the lender did)": {
+            "profit_per_1000_loans": 838329.0,
+            "approve_rate": 1.0,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0,
+            "defaulters_auto_approved": 1.0,
+            "goods_auto_declined": 0.0
+          },
+          "Two-way cost threshold (measured r)": {
+            "profit_per_1000_loans": 839558.0,
+            "approve_rate": 0.9915,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0085,
+            "defaulters_auto_approved": 0.9767,
+            "goods_auto_declined": 0.0059
+          },
+          "Two-way, price-aware (r per loan)": {
+            "profit_per_1000_loans": 838351.0,
+            "approve_rate": 0.9994,
+            "refer_rate": 0.0,
+            "decline_rate": 0.0006,
+            "defaulters_auto_approved": 0.9983,
+            "goods_auto_declined": 0.0004
+          },
+          "Same budget, no guarantee": {
+            "profit_per_1000_loans": 1053509.0,
+            "approve_rate": 0.8455,
+            "refer_rate": 0.1544,
+            "decline_rate": 0.0001,
+            "defaulters_auto_approved": 0.7066,
+            "goods_auto_declined": 0.0001
+          },
+          "CreditSense alpha 10%": {
+            "profit_per_1000_loans": 416148.0,
+            "approve_rate": 0.2479,
+            "refer_rate": 0.1273,
+            "decline_rate": 0.6248,
+            "defaulters_auto_approved": 0.0903,
+            "goods_auto_declined": 0.5896
+          },
+          "CreditSense alpha 20%": {
+            "profit_per_1000_loans": 557769.0,
+            "approve_rate": 0.3752,
+            "refer_rate": 0.1293,
+            "decline_rate": 0.4955,
+            "defaulters_auto_approved": 0.1739,
+            "goods_auto_declined": 0.4566
+          }
+        }
+      }
+    }
+  },
+  "money_sensitivity_creditsense_alpha10": {
+    "review $10, analyst right 100%": 593362.0,
+    "review $10, analyst right 90%": 552249.0,
+    "review $10, analyst right 80%": 511135.0,
+    "review $25, analyst right 100%": 590503.0,
+    "review $25, analyst right 90%": 549390.0,
+    "review $25, analyst right 80%": 508276.0,
+    "review $50, analyst right 100%": 585738.0,
+    "review $50, analyst right 90%": 544624.0,
+    "review $50, analyst right 80%": 503511.0
+  },
+  "exploratory_after_first_run": {
+    "note": "Added after seeing the pass-mark results, to explain them. Not pre-registered.",
+    "approve_all_profit_per_1000": 945590.0,
+    "same_budget_no_guarantee_profit_by_analyst_accuracy": {
+      "1.0": 1153590.0,
+      "0.95": 1125400.0,
+      "0.9": 1097210.0,
+      "0.85": 1069020.0,
+      "0.8": 1040830.0,
+      "0.75": 1012640.0,
+      "0.7": 984451.0,
+      "0.65": 956261.0,
+      "0.6": 928071.0,
+      "0.55": 899881.0,
+      "0.5": 871691.0
+    },
+    "analyst_accuracy_needed_to_match_approve_all": 0.631,
+    "default_rate_among_referred": 0.2352,
+    "profit_by_cap_alpha": {
+      "0.05": {
+        "profit_per_1000_loans": 500718.0,
+        "defaulters_auto_approved": 0.0581,
+        "decline_rate": 0.6474
+      },
+      "0.1": {
+        "profit_per_1000_loans": 590503.0,
+        "defaulters_auto_approved": 0.1097,
+        "decline_rate": 0.5684
+      },
+      "0.2": {
+        "profit_per_1000_loans": 736474.0,
+        "defaulters_auto_approved": 0.2111,
+        "decline_rate": 0.4324
+      },
+      "0.3": {
+        "profit_per_1000_loans": 848733.0,
+        "defaulters_auto_approved": 0.3109,
+        "decline_rate": 0.3204
+      },
+      "0.4": {
+        "profit_per_1000_loans": 941112.0,
+        "defaulters_auto_approved": 0.4053,
+        "decline_rate": 0.2232
+      },
+      "0.5": {
+        "profit_per_1000_loans": 1016672.0,
+        "defaulters_auto_approved": 0.4996,
+        "decline_rate": 0.1382
+      },
+      "0.6": {
+        "profit_per_1000_loans": 1096973.0,
+        "defaulters_auto_approved": 0.5973,
+        "decline_rate": 0.0515
+      },
+      "0.8": {
+        "profit_per_1000_loans": 1153590.0,
+        "defaulters_auto_approved": 0.6544,
+        "decline_rate": 0.0
+      }
+    }
+  },
+  "variant_B_label_delay": {
+    "train": "issued Jan 2010 - Jun 2011",
+    "calibrate": "issued Jul - Dec 2011",
+    "test": "issued 2015",
+    "model": "LightGBM (single model)",
+    "n_train": 14246,
+    "n_calibrate": 8321,
+    "n_test": 282787,
+    "test_2015": {
+      "AUC": 0.5894,
+      "KS": 0.1313,
+      "Brier": 0.1265,
+      "ECE": 0.0341,
+      "mean_predicted": 0.1187,
+      "observed": 0.1488
+    },
+    "defaulters_auto_approved_alpha10": 0.1188
+  },
+  "verdicts": {
+    "P1 ranking": {
+      "value": -0.0259,
+      "pass_mark": ">= -0.01",
+      "met": false
+    },
+    "P2 calibration": {
+      "value": 0.0205,
+      "pass_mark": "<= 0.02",
+      "met": false
+    },
+    "P3 guarantee": {
+      "value": 0.1097,
+      "pass_mark": "<= 0.12",
+      "met": true
+    },
+    "P4 money": {
+      "value": {
+        "mean": -355087.0,
+        "ci95": [
+          -364171.0,
+          -346084.0
+        ]
+      },
+      "pass_mark": "mean >= 0 (dollars per 1,000 loans vs approving all)",
+      "met": false
+    },
+    "P5 stacking": {
+      "value": 0.0011,
+      "pass_mark": "< 0.005 (H1: no meaningful gain)",
+      "met": true
+    }
+  },
+  "runtime_seconds": 351
+}

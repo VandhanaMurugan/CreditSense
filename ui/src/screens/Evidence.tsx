@@ -6,6 +6,7 @@ import { evidence, pick, type Dataset } from "../lib/evidence";
 import { int, num, pct, signed } from "../lib/format";
 import { repoUrl } from "../lib/repo";
 import { useAsync } from "../lib/useAsync";
+import { RealDataPanels } from "./RealData";
 
 const FIGURES: [string, string, string][] = [
   ["p2_price_of_guarantee.png", "Price of the guarantee", "Expected cost as the cap α tightens, for several analyst budgets."],
@@ -82,6 +83,8 @@ export default function EvidenceScreen() {
             </Caveat>
           </div>
         </Panel>
+
+        <RealDataPanels />
 
         <Panel title="Does stacking pay off? Four datasets">
           <Table caption="Stack against single models on the base paper's datasets" rows={uci} rowKey={([d]) => d}

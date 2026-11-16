@@ -1,0 +1,489 @@
+{
+  "data": {
+    "source": "Elliptic data set (public)",
+    "transactions": 203769,
+    "labelled": 46564,
+    "illicit_share_of_labelled": 0.0976,
+    "train_steps_1_29": 26381,
+    "calibrate_steps_30_34": 3513,
+    "test_steps_35_49": 16670,
+    "n_features": 165
+  },
+  "assumptions": {
+    "r": 20.0,
+    "c": 0.2,
+    "rho": 0.05,
+    "alpha": 0.1,
+    "analyst": "right every time"
+  },
+  "pass_marks": {
+    "Q1_ece_max": 0.02,
+    "Q2_miss_max_steps_35_42": 0.12,
+    "Q3_flag_psi": 0.1,
+    "Q3_flag_rate_gap": 0.02,
+    "Q4_stack_gain_max": 0.005
+  },
+  "metrics": {
+    "LR": {
+      "test_35_49": {
+        "AUC": 0.848,
+        "PR_AUC": 0.2034,
+        "KS": 0.5664,
+        "Brier": 0.112,
+        "ECE": 0.1427,
+        "mean_predicted": 0.207,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.8794,
+        "PR_AUC": 0.3266,
+        "KS": 0.631,
+        "Brier": 0.1022,
+        "ECE": 0.1163,
+        "mean_predicted": 0.2071,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.7256,
+        "PR_AUC": 0.0427,
+        "KS": 0.4509,
+        "Brier": 0.1265,
+        "ECE": 0.1827,
+        "mean_predicted": 0.2068,
+        "observed": 0.0253
+      }
+    },
+    "RF": {
+      "test_35_49": {
+        "AUC": 0.9299,
+        "PR_AUC": 0.7549,
+        "KS": 0.6987,
+        "Brier": 0.0375,
+        "ECE": 0.0425,
+        "mean_predicted": 0.0835,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.9697,
+        "PR_AUC": 0.8911,
+        "KS": 0.8357,
+        "Brier": 0.0288,
+        "ECE": 0.029,
+        "mean_predicted": 0.1058,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.6992,
+        "PR_AUC": 0.0377,
+        "KS": 0.4636,
+        "Brier": 0.0504,
+        "ECE": 0.063,
+        "mean_predicted": 0.0503,
+        "observed": 0.0253
+      }
+    },
+    "GB": {
+      "test_35_49": {
+        "AUC": 0.9257,
+        "PR_AUC": 0.7777,
+        "KS": 0.7063,
+        "Brier": 0.0395,
+        "ECE": 0.051,
+        "mean_predicted": 0.0962,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.9701,
+        "PR_AUC": 0.9073,
+        "KS": 0.8393,
+        "Brier": 0.0314,
+        "ECE": 0.0384,
+        "mean_predicted": 0.1218,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.6747,
+        "PR_AUC": 0.0357,
+        "KS": 0.3712,
+        "Brier": 0.0516,
+        "ECE": 0.0683,
+        "mean_predicted": 0.0579,
+        "observed": 0.0253
+      }
+    },
+    "XGB": {
+      "test_35_49": {
+        "AUC": 0.9304,
+        "PR_AUC": 0.7887,
+        "KS": 0.7123,
+        "Brier": 0.0363,
+        "ECE": 0.0458,
+        "mean_predicted": 0.0928,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.9728,
+        "PR_AUC": 0.9161,
+        "KS": 0.85,
+        "Brier": 0.027,
+        "ECE": 0.0342,
+        "mean_predicted": 0.117,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.6829,
+        "PR_AUC": 0.0365,
+        "KS": 0.4207,
+        "Brier": 0.0502,
+        "ECE": 0.0641,
+        "mean_predicted": 0.0566,
+        "observed": 0.0253
+      }
+    },
+    "LightGBM": {
+      "test_35_49": {
+        "AUC": 0.9374,
+        "PR_AUC": 0.7939,
+        "KS": 0.7127,
+        "Brier": 0.0252,
+        "ECE": 0.0274,
+        "mean_predicted": 0.0665,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.974,
+        "PR_AUC": 0.9167,
+        "KS": 0.848,
+        "Brier": 0.0188,
+        "ECE": 0.0172,
+        "mean_predicted": 0.0939,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.7226,
+        "PR_AUC": 0.0423,
+        "KS": 0.4656,
+        "Brier": 0.0349,
+        "ECE": 0.043,
+        "mean_predicted": 0.0256,
+        "observed": 0.0253
+      }
+    },
+    "Stack": {
+      "test_35_49": {
+        "AUC": 0.9324,
+        "PR_AUC": 0.7778,
+        "KS": 0.7133,
+        "Brier": 0.038,
+        "ECE": 0.0435,
+        "mean_predicted": 0.0849,
+        "observed": 0.065
+      },
+      "test_35_42": {
+        "AUC": 0.9725,
+        "PR_AUC": 0.9075,
+        "KS": 0.8505,
+        "Brier": 0.0281,
+        "ECE": 0.0318,
+        "mean_predicted": 0.1092,
+        "observed": 0.0916
+      },
+      "test_43_49": {
+        "AUC": 0.6981,
+        "PR_AUC": 0.0376,
+        "KS": 0.4682,
+        "Brier": 0.0529,
+        "ECE": 0.0636,
+        "mean_predicted": 0.0486,
+        "observed": 0.0253
+      }
+    }
+  },
+  "stacking_H1": {
+    "best_single": "LightGBM",
+    "stack_minus_best_single_auc": {
+      "mean": -0.0051,
+      "ci95": [
+        -0.0081,
+        -0.0023
+      ]
+    }
+  },
+  "policy": {
+    "cap_probability": 0.69252,
+    "Two-way cost threshold": {
+      "steps_35_42": {
+        "cost_per_1000": 275.37,
+        "approve_rate": 0.8392,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1608,
+        "defaulters_auto_approved": 0.1072,
+        "goods_auto_declined": 0.087,
+        "default_rate_in_approved": 0.0117
+      },
+      "steps_43_49": {
+        "cost_per_1000": 581.58,
+        "approve_rate": 0.8831,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1169,
+        "defaulters_auto_approved": 0.9231,
+        "goods_auto_declined": 0.118,
+        "default_rate_in_approved": 0.0264
+      },
+      "steps_35_49": {
+        "cost_per_1000": 398.2,
+        "approve_rate": 0.8568,
+        "refer_rate": 0.0,
+        "decline_rate": 0.1432,
+        "defaulters_auto_approved": 0.2345,
+        "goods_auto_declined": 0.1,
+        "default_rate_in_approved": 0.0178
+      }
+    },
+    "Same budget, no guarantee": {
+      "steps_35_42": {
+        "cost_per_1000": 222.92,
+        "approve_rate": 0.8217,
+        "refer_rate": 0.0748,
+        "decline_rate": 0.1035,
+        "defaulters_auto_approved": 0.1007,
+        "goods_auto_declined": 0.026,
+        "default_rate_in_approved": 0.0112
+      },
+      "steps_43_49": {
+        "cost_per_1000": 516.17,
+        "approve_rate": 0.8635,
+        "refer_rate": 0.0932,
+        "decline_rate": 0.0434,
+        "defaulters_auto_approved": 0.8994,
+        "goods_auto_declined": 0.044,
+        "default_rate_in_approved": 0.0263
+      },
+      "steps_35_49": {
+        "cost_per_1000": 340.55,
+        "approve_rate": 0.8385,
+        "refer_rate": 0.0822,
+        "decline_rate": 0.0794,
+        "defaulters_auto_approved": 0.2253,
+        "goods_auto_declined": 0.0336,
+        "default_rate_in_approved": 0.0175
+      }
+    },
+    "CreditSense alpha 10%": {
+      "steps_35_42": {
+        "cost_per_1000": 222.92,
+        "approve_rate": 0.8217,
+        "refer_rate": 0.0748,
+        "decline_rate": 0.1035,
+        "defaulters_auto_approved": 0.1007,
+        "goods_auto_declined": 0.026,
+        "default_rate_in_approved": 0.0112
+      },
+      "steps_43_49": {
+        "cost_per_1000": 516.17,
+        "approve_rate": 0.8635,
+        "refer_rate": 0.0932,
+        "decline_rate": 0.0434,
+        "defaulters_auto_approved": 0.8994,
+        "goods_auto_declined": 0.044,
+        "default_rate_in_approved": 0.0263
+      },
+      "steps_35_49": {
+        "cost_per_1000": 340.55,
+        "approve_rate": 0.8385,
+        "refer_rate": 0.0822,
+        "decline_rate": 0.0794,
+        "defaulters_auto_approved": 0.2253,
+        "goods_auto_declined": 0.0336,
+        "default_rate_in_approved": 0.0175
+      }
+    }
+  },
+  "guarantee": {
+    "in_time_mean_over_random_halves_of_steps_30_34": 0.0951,
+    "steps_35_42": 0.1007,
+    "steps_43_49": 0.8994,
+    "by_step": {
+      "35": {
+        "n": 1341,
+        "illicit": 182,
+        "missed_share": 0.0165,
+        "score_psi": 0.0325,
+        "predicted_illicit_rate": 0.1565,
+        "observed_illicit_rate": 0.1357,
+        "monitoring_flag": true
+      },
+      "36": {
+        "n": 1708,
+        "illicit": 33,
+        "missed_share": 0.0,
+        "score_psi": 0.3793,
+        "predicted_illicit_rate": 0.0574,
+        "observed_illicit_rate": 0.0193,
+        "monitoring_flag": true
+      },
+      "37": {
+        "n": 498,
+        "illicit": 40,
+        "missed_share": 0.3,
+        "score_psi": 0.2202,
+        "predicted_illicit_rate": 0.066,
+        "observed_illicit_rate": 0.0803,
+        "monitoring_flag": true
+      },
+      "38": {
+        "n": 756,
+        "illicit": 111,
+        "missed_share": 0.0721,
+        "score_psi": 0.1057,
+        "predicted_illicit_rate": 0.1562,
+        "observed_illicit_rate": 0.1468,
+        "monitoring_flag": true
+      },
+      "39": {
+        "n": 1183,
+        "illicit": 81,
+        "missed_share": 0.0494,
+        "score_psi": 0.6764,
+        "predicted_illicit_rate": 0.1079,
+        "observed_illicit_rate": 0.0685,
+        "monitoring_flag": true
+      },
+      "40": {
+        "n": 1211,
+        "illicit": 112,
+        "missed_share": 0.2321,
+        "score_psi": 0.3298,
+        "predicted_illicit_rate": 0.1033,
+        "observed_illicit_rate": 0.0925,
+        "monitoring_flag": true
+      },
+      "41": {
+        "n": 1132,
+        "illicit": 116,
+        "missed_share": 0.0431,
+        "score_psi": 0.1654,
+        "predicted_illicit_rate": 0.1166,
+        "observed_illicit_rate": 0.1025,
+        "monitoring_flag": true
+      },
+      "42": {
+        "n": 2154,
+        "illicit": 239,
+        "missed_share": 0.1423,
+        "score_psi": 0.155,
+        "predicted_illicit_rate": 0.1143,
+        "observed_illicit_rate": 0.111,
+        "monitoring_flag": true
+      },
+      "43": {
+        "n": 1370,
+        "illicit": 24,
+        "missed_share": 0.75,
+        "score_psi": 1.2331,
+        "predicted_illicit_rate": 0.0254,
+        "observed_illicit_rate": 0.0175,
+        "monitoring_flag": true
+      },
+      "44": {
+        "n": 1591,
+        "illicit": 24,
+        "missed_share": 0.7083,
+        "score_psi": 1.0038,
+        "predicted_illicit_rate": 0.0874,
+        "observed_illicit_rate": 0.0151,
+        "monitoring_flag": true
+      },
+      "45": {
+        "n": 1221,
+        "illicit": 5,
+        "missed_share": 0.6,
+        "score_psi": 0.5445,
+        "predicted_illicit_rate": 0.0559,
+        "observed_illicit_rate": 0.0041,
+        "monitoring_flag": true
+      },
+      "46": {
+        "n": 712,
+        "illicit": 2,
+        "missed_share": 0.5,
+        "score_psi": 1.0031,
+        "predicted_illicit_rate": 0.0518,
+        "observed_illicit_rate": 0.0028,
+        "monitoring_flag": true
+      },
+      "47": {
+        "n": 846,
+        "illicit": 22,
+        "missed_share": 1.0,
+        "score_psi": 0.9054,
+        "predicted_illicit_rate": 0.0194,
+        "observed_illicit_rate": 0.026,
+        "monitoring_flag": true
+      },
+      "48": {
+        "n": 471,
+        "illicit": 36,
+        "missed_share": 1.0,
+        "score_psi": 0.9102,
+        "predicted_illicit_rate": 0.0121,
+        "observed_illicit_rate": 0.0764,
+        "monitoring_flag": true
+      },
+      "49": {
+        "n": 476,
+        "illicit": 56,
+        "missed_share": 0.9821,
+        "score_psi": 1.0437,
+        "predicted_illicit_rate": 0.0504,
+        "observed_illicit_rate": 0.1176,
+        "monitoring_flag": true
+      }
+    },
+    "breach_steps_after_42": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "breach_steps_flagged_by_monitoring": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "verdicts": {
+    "Q1 calibration": {
+      "value": 0.0435,
+      "pass_mark": "<= 0.02",
+      "met": false
+    },
+    "Q2 guarantee": {
+      "value": 0.1007,
+      "pass_mark": "<= 0.12 (steps 35-42)",
+      "met": true
+    },
+    "Q3 stress": {
+      "value": {
+        "miss_share_steps_43_49": 0.8994,
+        "breach_steps": 7,
+        "flagged": 7
+      },
+      "pass_mark": "every breach step after 42 is flagged by monitoring",
+      "met": true
+    },
+    "Q4 stacking": {
+      "value": -0.0051,
+      "pass_mark": "< 0.005",
+      "met": true
+    }
+  },
+  "runtime_seconds": 674
+}

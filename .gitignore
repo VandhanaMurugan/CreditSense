@@ -7,3 +7,7 @@ artifacts/
 data/uci/*
 !data/uci/README.md
 !models/*.joblib
+data/lendingclub/*
+!data/lendingclub/README.md
+data/elliptic/*
+!data/elliptic/README.md
